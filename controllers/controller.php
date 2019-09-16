@@ -7,9 +7,19 @@ class MvcController{
 
 	public function pagina(){	
 		
-		include "views/template.php";
+		include "views/modules/ingresar.php";
 	
 	}
+
+
+	public function pagina2(){	
+		
+		include "template.php";
+	
+	}
+
+
+
 
 
 
@@ -38,7 +48,7 @@ class MvcController{
 
 		else{
 
-			$enlaces = "index";
+			$enlaces = "template";
 		}
 
 		$respuesta = Paginas::enlacesPaginasModel($enlaces);

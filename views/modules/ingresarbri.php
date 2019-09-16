@@ -9,24 +9,23 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App css -->
-        <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="../../assets/css/icons.css" rel="stylesheet" type="text/css" />
-        <link href="../../assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
-        <link href="../../assets/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/metismenu.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
 
-        <script src="../../assets/js/modernizr.min.js"></script>
+        <script src="assets/js/modernizr.min.js"></script>
 
     </head>
 
 
     <body class="account-pages">
 
-        <!--  Begin page -->
-    <div class="nuevocc">
-        <div class="wrapper-page account-page-full">
+
+        <div class="wrapper-page d-flex justify-content-center m-t-50">
 
             <div class="card">
                 <div class="card-block">
@@ -36,11 +35,11 @@
                         <div class="card-box p-5">
                             <h2 class="text-uppercase text-center pb-4">
                                 <a  class="text-success">
-                                    <span><img src="../../assets/images/logo.png" alt="" height="26"></span>
+                                    <span><img src="assets/images/logo.png" alt="" height="26"></span>
                                 </a>
                             </h2>
 
-                            <form class="" action="#">
+                            <form class="" action="POST">
 
                                 <div class="form-group m-b-20 row">
                                     <div class="col-12">
@@ -74,18 +73,17 @@
 
                 </div>
             </div>
-		</div>
-           
+	
 
 
 
         <!-- jQuery  -->
-        <script src="../../assets/js/jquery.min.js"></script>
-        <script src="../../assets/js/popper.min.js"></script>
-        <script src="../../assets/js/bootstrap.min.js"></script>
-        <script src="../../assets/js/metisMenu.min.js"></script>
-        <script src="../../assets/js/waves.js"></script>
-        <script src="../../assets/js/jquery.slimscroll.js"></script>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/metisMenu.min.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
 
         <!-- App js -->
         <script src="../../assets/js/jquery.core.js"></script>

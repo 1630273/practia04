@@ -73,8 +73,8 @@
                             <li>
                                 <a href="javascript: void(0);"><i class="fi-layers"></i> <span> Alumnos </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="AgregarAlumnos.php">Agregar</a></li>
-                                    <li><a href="AlumnosVer.php">Ver Alumnos</a></li>
+                                    <li><a href="modules/AgregarAlumnos.php">Agregar</a></li>
+                                    <li><a href="modules/AlumnosVer.php">Ver Alumnos</a></li>
                         
                                 </ul>
                             </li>
@@ -82,16 +82,16 @@
                             <li>
                                 <a href="javascript: void(0);"><i class="fi-mail"></i><span> Maestros </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="AgregarMaestros.php">Agregar</a></li>
-                                    <li><a href="MaestrosVer.php">Ver Maestros</a></li>
+                                    <li><a href="modules/AgregarMaestros.php">Agregar</a></li>
+                                    <li><a href="modules/MaestrosVer.php">Ver Maestros</a></li>
                                  </ul>
                             </li>
 
                             <li>
                                 <a href="javascript: void(0);"><i class="fi-layout"></i><span> Grupos </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="AgregarGrupos.php">Agregar</a></li>
-                                    <li><a href="GruposVer.php">Ver Grupos</a></li>
+                                    <li><a href="modules/AgregarGrupos.php">Agregar</a></li>
+                                    <li><a href="modules/GruposVer.php">Ver Grupos</a></li>
                         
                                 </ul>
                             </li>
@@ -99,8 +99,8 @@
                             <li>
                                 <a href="javascript: void(0);"><i class="fi-briefcase"></i> <span> Padres </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="AgregarPadres.php">Agregar</a></li>
-                                    <li><a href="PadresVer.php">Ver Padres</a></li>
+                                    <li><a href="modules/AgregarPadres.php">Agregar</a></li>
+                                    <li><a href="modules/PadresVer.php">Ver Padres</a></li>
                         
                                 </ul>
                             </li>
@@ -110,8 +110,8 @@
                             <li>
                                 <a href="javascript: void(0);"><i class="fi-bar-graph-2"></i><span> Usuarios </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="AgregarUsuario.php">Agregar</a></li>
-                                    <li><a href="UsuarioVer.php">Ver Usuarios</a></li>
+                                <li><a href="template.php?action=AgregarUsuario">Agregar</a></li>
+                                    <li><a href="modules/UsuarioVer.php?action=verUsuarios">Ver Usuarios</a></li>
                         
                                 </ul>
                             </li>
@@ -136,151 +136,17 @@
             <!-- Start right Content here -->
             <!-- ============================================================== -->
 
-            <div class="content-page">
+            <div class="content-page  ">
 
               
+               
+            <?php 
+                require_once "../models/enlaces.php";
+                require_once "../controllers/controller.php";
+                $mvc = new MvcController();
+                $mvc -> enlacesPaginasController();
 
-
-                <!-- Start Page content -->
-                <div class="content">
-                    <div class="container-fluid">
-
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card-box">
-                                    <h4 class="header-title mb-4">Account Overview</h4>
-
-                                    <div class="row">
-                                      
-
-                                        <div class="col-sm-6 col-lg-6 col-xl-3">
-                                            <div class="card-box mb-0 widget-chart-two">
-                                                <div class="float-center">
-                                                    <input data-plugin="knob" data-width="80" data-height="80" data-linecap=round
-                                                           data-fgColor="#f9bc0b" value="92" data-skin="tron" data-angleOffset="180"
-                                                           data-readOnly=true data-thickness=".1"/>
-                                                </div>
-                                                <div class="widget-chart-two-content">
-                                                    <p class="text-muted mb-0 mt-2">Sales Analytics</p>
-                                                    <h3 class="">$97,511</h3>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6 col-lg-6 col-xl-3">
-                                            <div class="card-box mb-0 widget-chart-two">
-                                                <div class="float-right">
-                                                    <input data-plugin="knob" data-width="80" data-height="80" data-linecap=round
-                                                           data-fgColor="#f1556c" value="14" data-skin="tron" data-angleOffset="180"
-                                                           data-readOnly=true data-thickness=".1"/>
-                                                </div>
-                                                <div class="widget-chart-two-content">
-                                                    <p class="text-muted mb-0 mt-2">Statistics</p>
-                                                    <h3 class="">$954</h3>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6 col-lg-6 col-xl-3">
-                                            <div class="card-box mb-0 widget-chart-two">
-                                                <div class="float-right">
-                                                    <input data-plugin="knob" data-width="80" data-height="80" data-linecap=round
-                                                           data-fgColor="#2d7bf4" value="60" data-skin="tron" data-angleOffset="180"
-                                                           data-readOnly=true data-thickness=".1"/>
-                                                </div>
-                                                <div class="widget-chart-two-content">
-                                                    <p class="text-muted mb-0 mt-2">Total Revenue</p>
-                                                    <h3 class="">$32,540</h3>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end row -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end row -->
-
-
-
-
-                       
-
-                        
-<div class="row">
-   
-		<div class="col-lg-8 float-center " >
-       
-			<div class="card-box ">
-				<h4 class="header-title m-t-0">Registro de Usuarios</h4>
-			
-				<form class="" action="POST">
-                <div class="form-group">
-						<label>No.</label>
-						<div>
-							<input data-parsley-type="number" type="text"
-									class="form-control" required name="num"
-									placeholder="Numero de empelado"/>
-						</div>
-					</div>
-                    <div class="form-group">
-						<label>Nombre</label>
-						<div>
-							<input data-parsley-type="alphanum" type="text"
-									class="form-control" required
-									placeholder="Nombre"/>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label>Contraseña</label>
-						<div>
-							<input type="password" id="pass2" name="pass" class="form-control" required
-									placeholder="Password"/>
-                        </div>
-                        <label>Confirmar Contraseña</label>
-						<div class="mt-2">
-							<input type="password" class="form-control" name="confpass" required
-									data-parsley-equalto="#pass2"
-									placeholder="Re-Type Password"/>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label>Correo</label>
-						<div>
-							<input type="email" class="form-control" required
-									parsley-type="email" placeholder="Enter a valid e-mail"/>
-						</div>
-					</div>
-					
-				
-				
-					
-					<div class="form-group">
-						<div>
-							<button type="submit" class="btn btn-custom waves-effect waves-light">
-								Agregar
-							</button>
-						
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-
-</div>
-
-
-
-
-                    </div> <!-- container -->
-
-                </div> <!-- content -->
-
+            ?>
                
             </div>
 
