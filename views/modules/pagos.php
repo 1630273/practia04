@@ -12,19 +12,17 @@ if(!$_SESSION["validar"]){
 
 ?>
 
-<h1>USUARIOS</h1>
+<h1>PADRES</h1>
 
 	<table border="1">
 		
 		<thead>
 			
 			<tr>
-				<th>Nombre</th>
-				<th>Apellido Paterno</th>
-				<th>Apellido Materno</th>
-				<th>Usuarios</th>
-				<th>Contraseña</th>
-				<th>Correo</th>
+				<th>No. Padre</th>
+				<th>No. Usuario</th>
+				<th>Descripción</th>
+				<th>Monto</th>
 				<th></th>
 				<th></th>
 
@@ -36,9 +34,9 @@ if(!$_SESSION["validar"]){
 			
 			<?php
 
-			$vistaUsuario = new MvcController();
-			$vistaUsuario -> vistaUsuariosController();
-			$vistaUsuario -> borrarUsuarioController();
+			$vistaPadre = new MvcController();
+			$vistaPadre -> vistaPagoController();
+			$vistaPadre -> borrarPagoController();
 
 			?>
 
@@ -50,7 +48,7 @@ if(!$_SESSION["validar"]){
 
 if(isset($_GET["action"])){
 
-	if($_GET["action"] == "cambio"){
+	if($_GET["action"] == "cambiooooo"){
 
 		echo "Cambio Exitoso";
 	

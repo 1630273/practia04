@@ -1,14 +1,10 @@
 <?php
 
-
-
-
-
 class Conexion{
 
 	public function conectar(){
 
-		$link = new PDO("mysql:host=localhost;dbname=practica03mvc","root","");
+		$link = new PDO("mysql:host=localhost;dbname=practica4mvc","root","");
 		return $link;
 
 	}

@@ -13,21 +13,17 @@ if(!$_SESSION["validar"]){
 ?>
 
 
-<h1>REGISTRO DE USUARIO</h1>
+<h1>REGISTRO DE ALUMNO</h1>
 
 <form method="POST">
-	
-	<input type="text" placeholder="Usuario" name="usuarioRegistro" required>
-
-	<input type="password" placeholder="Contraseña" name="passwordRegistro" required>
-
-	<input type="email" placeholder="Email" name="emailRegistro" required>
 
 	<input type="text" placeholder="Nombre" name="nombreRegistro" required>
 
 	<input type="text" placeholder="Apellido Paterno" name="paternoRegistro"  required>
 
 	<input type="text" placeholder="Apellido Materno" name="maternoRegistro"  required>
+
+	<input type="number" placeholder="Edad" name="edadRegistro"  required>
 
 	<input type="submit" value="Enviar">
 
@@ -36,16 +32,14 @@ if(!$_SESSION["validar"]){
 <?php
 
 $registro = new MvcController();
-$registro -> registroUsuarioController();
+$registro -> registroAlumnoController();
 
 if(isset($_GET["action"])){
 
-	if($_GET["action"] == "ok"){
+	if($_GET["action"] == "okk"){
 
 		echo "Registro Exitoso";
 	
-	}else{
-		echo "Registro Fallido";
 	}
 
 }
