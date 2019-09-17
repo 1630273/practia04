@@ -5,9 +5,9 @@ class Paginas{
 	public function enlacesPaginasModel($enlaces){
 
 
-		if($enlaces == "ingresar" || $enlaces == "usuarios" || $enlaces == "editar" || $enlaces == "salir" || $enlaces == "registroAlu" || $enlaces == "registroMaestro"|| $enlaces == "maestroEditar" || $enlaces == "maestros" || $enlaces == "alumnos" ||$enlaces == "alumnoEditar" || $enlaces == "registroPadre" || $enlaces == "padres" || $enlaces == "padresEditar" || $enlaces == "registroPago" || $enlaces == "pagos" || $enlaces == "pagosEditar"){
+		if($enlaces == "registroAlu" ||$enlaces == "registro"||$enlaces == "ingresar" ||$enlaces == "alumnos" || $enlaces == "inicio" || $enlaces == "usuarios" || $enlaces == "editar" ||  $enlaces == "registroAlu" || $enlaces == "registroMaestro"|| $enlaces == "maestroEditar" || $enlaces == "maestros" || $enlaces == "alumnos" ||$enlaces == "alumnoEditar" || $enlaces == "registroPadre" || $enlaces == "padres" || $enlaces == "padresEditar" || $enlaces == "registroPago" || $enlaces == "pagos" || $enlaces == "pagosEditar"){
 
-			$module =  "views/modules/".$enlaces.".php";
+			$module =  "../views/modules/".$enlaces.".php";
 		
 		}
 
@@ -41,7 +41,7 @@ class Paginas{
 
 		else if($enlaces == "fallo"){
 
-			$module =  "views/modules/ingresar.php";
+			$module =  "../views/modules/ingresar.php";
 		
 		}
 
@@ -73,11 +73,16 @@ class Paginas{
 
 			$module =  "views/modules/pagos.php";
 		
-		}		
+		}
+		else if($enlaces == "salir"){
+
+			$module =  "views/modules/ingresar.php";
+		
+		}
 
 		else{
 
-			$module =  "views/modules/registro.php";
+			$module =  "../views/modules/ingresar.php";
 
 		}
 		

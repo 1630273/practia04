@@ -7,6 +7,12 @@ class MvcController{
 
 	public function pagina(){	
 		
+		include "views/modules/ingresar.php";
+	
+	}
+
+	public function pagina2(){	
+		
 		include "views/template.php";
 	
 	}
@@ -86,7 +92,7 @@ class MvcController{
 
 				$_SESSION["validar"] = true;
 
-				header("location:index.php?action=usuarios");
+				header("location:views/template.php?action=inicio");
 
 			}
 
@@ -406,13 +412,13 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				header("location:index.php?action=okk");
+				header("location:template.php?action=okk");
 
 			}
 
 			else{
 
-				header("location:index.php");
+				header("location:template.php");
 			}
 
 		}
@@ -434,8 +440,8 @@ class MvcController{
 	 			<td>'.$item["ape_paterno"].'</td>
 	 			<td>'.$item["ape_materno"].'</td>
 	 			<td>'.$item["edad"].'</td>
-	 			<td><a href="index.php?action=alumnoEditar&no_alu='.$item["no_alu"].'"><button>Editar</button></a></td>
-	 			<td><a href="index.php?action=alumnos&no_aluBorrar='.$item["no_alu"].'"><button>Borrar</button></a></td>
+	 			<td><a href="template.php?action=alumnoEditar&no_alu='.$item["no_alu"].'"><button>Editar</button></a></td>
+	 			<td><a href="template.php?action=alumnos&no_aluBorrar='.$item["no_alu"].'"><button>Borrar</button></a></td>
 	 		</tr>';
 
 	 	}
@@ -485,7 +491,7 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:index.php?action=cambioo");
+	 			header("location:template.php?action=cambioo");
 
 	 		}
 
@@ -511,7 +517,7 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:index.php?action=alumnos");
+	 			header("location:template.php?action=alumnos");
 			
 	 		}
 
@@ -568,13 +574,13 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				header("location:index.php?action=okkkk");
+				header("location:template.php?action=okkkk");
 
 			}
 
 			else{
 
-				header("location:index.php");
+				header("location:template.php");
 			}
 
 		}
@@ -597,8 +603,8 @@ class MvcController{
 	 			<td>'.$item["ape_materno"].'</td>
 	 			<td>'.$item["telefono"].'</td>
 	 			<td>'.$item["email"].'</td>
-	 			<td><a href="index.php?action=padresEditar&no_padre='.$item["no_padre"].'"><button>Editar</button></a></td>
-	 			<td><a href="index.php?action=padres&no_padreBorrar='.$item["no_padre"].'"><button>Borrar</button></a></td>
+	 			<td><a href="template.php?action=padresEditar&no_padre='.$item["no_padre"].'"><button>Editar</button></a></td>
+	 			<td><a href="template.php?action=padres&no_padreBorrar='.$item["no_padre"].'"><button>Borrar</button></a></td>
 	 		</tr>';
 
 	 	}
@@ -652,7 +658,7 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:index.php?action=cambioooo");
+	 			header("location:template.php?action=cambioooo");
 
 	 		}
 
@@ -678,7 +684,7 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:index.php?action=padres");
+	 			header("location:template.php?action=padres");
 			
 	 		}
 
@@ -726,13 +732,13 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				header("location:index.php?action=okkkkk");
+				header("location:template.php?action=okkkkk");
 
 			}
 
 			else{
 
-				header("location:index.php");
+				header("location:template.php");
 			}
 
 		}
@@ -754,8 +760,8 @@ class MvcController{
 	 			<td>'.$item["no_usu"].'</td>
 	 			<td>'.$item["descripcion"].'</td>
 	 			<td>'.$item["monto"].'</td>
-	 			<td><a href="index.php?action=pagosEditar&no_pago='.$item["no_pago"].'"><button>Editar</button></a></td>
-	 			<td><a href="index.php?action=pagos&no_pagoBorrar='.$item["no_pago"].'"><button>Borrar</button></a></td>
+	 			<td><a href="template.php?action=pagosEditar&no_pago='.$item["no_pago"].'"><button>Editar</button></a></td>
+	 			<td><a href="template.php?action=pagos&no_pagoBorrar='.$item["no_pago"].'"><button>Borrar</button></a></td>
 	 		</tr>';
 
 	 	}
@@ -805,7 +811,7 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:index.php?action=cambiooooo");
+	 			header("location:template.php?action=cambiooooo");
 
 	 		}
 
@@ -831,7 +837,7 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:index.php?action=pagos");
+	 			header("location:template.php?action=pagos");
 			
 	 		}
 

@@ -1,33 +1,66 @@
-<?php
-
-session_start();
-
-if(!$_SESSION["validar"]){
-
-	header("location:index.php?action=ingresar");
-
-	exit();
-
-}
-
-?>
 
 
-<h1>REGISTRO DE ALUMNO</h1>
 
-<form method="POST">
+<div class="row ">
+   
+   <div class="col-lg-6  " >
+   
+	   <div class="card-box  ">
+		   <h3 class="header-title m-t-0">Registro de Alumnos</h3>
+	   
+		   <form method="POST" >
+		   		
+			  	 <div class="form-group">
+				   <label>Nombre</label>
+				   <div>
+					   <input data-parsley-type="alphanum" type="text"
+							   class="form-control" name="nombreRegistro" required
+							   placeholder=" Ingresa Nombre"/>
+				   </div>
+				</div>
+				
+				   
+				<div class="form-group">
+				   <label>Apellido Paterno</label>
+				   <div>
+					   <input data-parsley-type="alphanum" type="text"
+							   class="form-control" name="paternoRegistro" required
+							   placeholder="Ingresa Apellido"/>
+				   </div>
+				</div>
 
-	<input type="text" placeholder="Nombre" name="nombreRegistro" required>
+				<div class="form-group">
+				   <label>Apellido Materno</label>
+				   <div>
+					   <input  type="text"
+							   class="form-control" name="maternoRegistro" required
+							   placeholder="Ingresa Apellido"/>
+				   </div>
+				</div>
+		   
+				   <div class="form-group">
+				   <label>Edad</label>
+				   <div>
+					   <input data-parsley-type="number" type="text"
+							   class="form-control" name="edadRegistro"  required name="num"
+							   placeholder="Ingresa Edad"/>
+				   </div>
+			  	 </div>
+			   
+			   <div class="form-group">
+				   <div>
+					   <button type="submit" value="Enviar" class="btn btn-block  btn-custom waves-effect waves-light">
+						   Agregar
+					   </button>
+				   
+				   </div>
+			   </div>
+		   </form>
+	   </div>
+   </div>
 
-	<input type="text" placeholder="Apellido Paterno" name="paternoRegistro"  required>
+</div>
 
-	<input type="text" placeholder="Apellido Materno" name="maternoRegistro"  required>
-
-	<input type="number" placeholder="Edad" name="edadRegistro"  required>
-
-	<input type="submit" value="Enviar">
-
-</form>
 
 <?php
 

@@ -3,12 +3,12 @@
       <ul class="menu">
         <li><a href="#">Registros</a>
           <ul class="submenu">
-            <li><a href="index.php">Registro usuarios</a></li>
-            <li><a href="index.php?action=registroAlu">Registro alumnos</a></li>
-            <li><a href="index.php?action=registroMaestro">Registro maestros</a></li>
-            <li><a href="index.php?action=registroPadre">Registro padre</a></li>
+            <li><a href="template.php">Registro usuarios</a></li>
+            <li><a href="template.php?action=registroAlu">Registro alumnos</a></li>
+            <li><a href="template.php?action=registroMaestro">Registro maestros</a></li>
+            <li><a href="template.php?action=registroPadre">Registro padre</a></li>
             <li><a href="#">Registro grupo</a></li>
-            <li><a href="index.php?action=registroPago">Registro pago</a></li>
+            <li><a href="template.php?action=registroPago">Registro pago</a></li>
           </ul>
         </li>
         <li><a href="index.php?action=ingresar">Ingreso</a></li>

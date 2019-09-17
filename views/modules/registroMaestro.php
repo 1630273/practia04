@@ -1,31 +1,60 @@
-<?php
-
-session_start();
-
-if(!$_SESSION["validar"]){
-
-	header("location:index.php?action=ingresar");
-
-	exit();
-
-}
-
-?>
 
 
-<h1>REGISTRO DE MAESTRO</h1>
 
-<form method="POST">
 
-	<input type="text" placeholder="Nombre" name="nombreRegistro" required>
+<div class="row ">
+   
+   <div class="col-lg-6  " >
+   
+	   <div class="card-box  ">
+		   <h3 class="header-title m-t-0">Registro de Maestros</h3>
+	   
+		   <form method="POST" >
+		   		
+			  	 <div class="form-group">
+				   <label>Nombre</label>
+				   <div>
+					   <input data-parsley-type="alphanum" type="text"
+							   class="form-control" name="nombreRegistro" required
+							   placeholder=" Ingresa Nombre"/>
+				   </div>
+				</div>
+				
+				   
+				<div class="form-group">
+				   <label>Apellido Paterno</label>
+				   <div>
+					   <input data-parsley-type="alphanum" type="text"
+							   class="form-control" name="paternoRegistro" required
+							   placeholder="Ingresa Apellido"/>
+				   </div>
+				</div>
 
-	<input type="text" placeholder="Apellido Paterno" name="paternoRegistro"  required>
+				<div class="form-group">
+				   <label>Apellido Materno</label>
+				   <div>
+					   <input  type="text"
+							   class="form-control" name="maternoRegistro" required
+							   placeholder="Ingresa Apellido"/>
+				   </div>
+				</div>
+		   
+				
+			   
+			   <div class="form-group">
+				   <div>
+					   <button type="submit" value="Enviar" class="btn btn-block  btn-custom waves-effect waves-light">
+						   Agregar
+					   </button>
+				   
+				   </div>
+			   </div>
+		   </form>
+	   </div>
+   </div>
 
-	<input type="text" placeholder="Apellido Materno" name="maternoRegistro"  required>
+</div>
 
-	<input type="submit" value="Enviar">
-
-</form>
 
 <?php
 
