@@ -67,7 +67,7 @@ if(!$_SESSION["validar"]){
                         <div class="user-img">
                             <img src="../assets/images/users/avatar-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle img-fluid">
                         </div>
-                        <h5><a href="#"><?php echo $nombre; ?></a> </h5>
+                        <h5><a href="#"> $nombre; ?></a> </h5>
                         <p class="text-muted">Admin Head</p>
                     </div>
 
@@ -80,12 +80,12 @@ if(!$_SESSION["validar"]){
 
                             <li>
                                 <a href="template.php?action=inicio">
-                                    <i class="fi-air-play"></i><span class="badge badge-danger badge-pill pull-right">7</span> <span> Inicio </span>
+                                <i class="mdi mdi-home"></i> <span> Inicio </span>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="javascript: void(0);"><i class="fa fa-graduation-cap"></i> <span> Alumnos </span> <span class="menu-arrow"></span></a>
+                                <a href="javascript: void(0);"><i class="mdi mdi-school"></i> <span> Alumnos </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="template.php?action=registroAlu">Agregar</a></li>
                                     <li><a href="template.php?action=alumnos">Ver Alumnos</a></li>
@@ -102,7 +102,15 @@ if(!$_SESSION["validar"]){
                             </li>
 
                             <li>
-                                <a href="javascript: void(0);"><i class="fa fa-dollar"></i><span> Pagos </span> <span class="menu-arrow"></span></a>
+                                <a href="javascript: void(0);"><i class="mdi mdi-account-multiple"></i><span> Grupos </span> <span class="menu-arrow"></span></a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="template.php?action=registroGrupo">Agregar</a></li>
+                                    <li><a href="template.php?action=grupos">Ver Grupos</a></li>
+                        
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript: void(0);"><i class="mdi mdi-square-inc-cash"></i></i><span> Pagos </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="template.php?action=registroPago">Agregar</a></li>
                                     <li><a href="template.php?action=pagos">Ver Pagos</a></li>
@@ -111,7 +119,7 @@ if(!$_SESSION["validar"]){
                             </li>
 
                             <li>
-                                <a href="javascript: void(0);"><i class="fa fa-black-tie"></i> <span> Padres </span> <span class="menu-arrow"></span></a>
+                                <a href="javascript: void(0);"><i class="mdi mdi-account-card-details"></i> <span> Padres </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="template.php?action=registroPadre">Agregar</a></li>
                                     <li><a href="template.php?action=padres">Ver Padres</a></li>
@@ -122,7 +130,7 @@ if(!$_SESSION["validar"]){
                             
 
                             <li>
-                                <a href="javascript: void(0);"><i class="fa fa-user"></i></i><span> Usuarios </span> <span class="menu-arrow"></span></a>
+                                <a href="javascript: void(0);"><i class="mdi mdi-account"></i><span> Usuarios </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                 <li><a href="template.php?action=registro">Agregar</a></li>
                                     <li><a href="template.php?action=usuarios">Ver Usuarios</a></li>

@@ -262,6 +262,56 @@ class MvcController{
 
 
 
+		#REGISTRO DE Maestros
+	#------------------------------------
+	public function registroGrupoController(){
+
+		if(isset($_POST["nombreRegistro"])){
+
+			$datosController = array( 
+				"nombre"=>$_POST["nombreRegistro"],
+
+				"des"=>$_POST["desRegistro"],
+
+				"maestro"=>$_POST["maestro"]
+			
+			);
+
+			$respuesta = Datos::registroGrupoModel($datosController, "grupos");
+
+			if($respuesta == "success"){
+
+				header("location:template.php?action=grupook");
+
+			}
+
+		
+
+		}
+
+	}
+
+// #VISTA DE Maestro
+	// #------------------------------------
+
+	public function vistaGruposController(){
+
+		$respuesta = Datos::vistaGruposModel("grupos", "maestros");
+
+
+		foreach($respuesta as $row => $item){
+		echo'<tr>
+				<td>'.$item["nombre_grupo"].'</td>
+				<td>'.$item["descripcion"].'</td>
+				<td>'.$item["nombre"].' '.$item["ape_paterno"].' '.$item["ape_materno"].'</td>
+				<td><a href="index.php?action=grupoEditar&no_grupo='.$item["no_grupo"].'"class="btn btn-sm btn-custom"><i class="fa fa-edit"></i></a></td>
+				<td><a href="index.php?action=grupo&no_grupoBorrar='.$item["no_grupo"].'"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
+			</tr>';
+
+		}
+
+	}
+
 
 
 		#REGISTRO DE Maestros
@@ -324,15 +374,15 @@ class MvcController{
 	 	$datosController = $_GET["no_maestro"];
 	 	$respuesta = Datos::editarMaestroModel($datosController, "maestros");
 
-	 	echo'<input type="hidden" value="'.$respuesta["no_maestro"].'" name="no_maestroEditar">
+		 echo'<input type="hidden" value="'.$respuesta["no_maestro"].'" name="no_maestroEditar">
 
-	 		 <input text="text" value="'.$respuesta["nombre"].'" name="nombreEditar" required>
+		 <input text="text" value="'.$respuesta["nombre"].'" name="nombreEditar" required>
 
-	 		 <input text="text" value="'.$respuesta["ape_paterno"].'" name="paternoEditar" required>
+		 <input text="text" value="'.$respuesta["ape_paterno"].'" name="paternoEditar" required>
 
-	 		 <input text="text" value="'.$respuesta["ape_materno"].'" name="maternoEditar" required>
+		 <input text="text" value="'.$respuesta["ape_materno"].'" name="maternoEditar" required>
 
-	 		 <input type="submit" value="Actualizar">';
+		 <input type="submit" value="Actualizar">';
 
 	 }
 
@@ -474,17 +524,7 @@ class MvcController{
 	 	$datosController = $_GET["no_alu"];
 	 	$respuesta = Datos::editarAlumnoModel($datosController, "alumnos");
 
-	 	echo'<input type="hidden" value="'.$respuesta["no_alu"].'" name="no_aluEditar">
-
-	 		 <input text="text" value="'.$respuesta["nombre"].'" name="nombreEditar" required>
-
-	 		 <input text="text" value="'.$respuesta["ape_paterno"].'" name="paternoEditar" required>
-
-	 		 <input text="text" value="'.$respuesta["ape_materno"].'" name="maternoEditar" required>
-
-	 		 <input type="number" value="'.$respuesta["edad"].'" name="edadEditar" required>
-
-	 		 <input type="submit" value="Actualizar">';
+	 
 
 	 }
 

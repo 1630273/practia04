@@ -84,7 +84,7 @@ if(!$_SESSION["validar"]){
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript: void(0);"><i class="fa fa-dollar"></i><span> Pagos </span> <span class="menu-arrow"></span></a>
+                                <a href="javascript: void(0);"><i class="mdi mdi-square-inc-cash"></i></i><span> Pagos </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="template.php?action=registroPago">Agregar</a></li>
                                     <li><a href="template.php?action=pagos">Ver Pagos</a></li>

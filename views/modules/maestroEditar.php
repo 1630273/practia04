@@ -24,6 +24,9 @@ if(!$_SESSION["validar"]){
 
 	?>
 
+
+
+	
 </form>
 
 

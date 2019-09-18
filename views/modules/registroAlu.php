@@ -8,7 +8,9 @@
 	   <div class="card-box  ">
 		   <h3 class="header-title m-t-0">Registro de Alumnos</h3>
 	   
-		   <form method="POST" >
+		   <form method="POST" > 
+
+		   
 		   		
 			  	 <div class="form-group">
 				   <label>Nombre</label>

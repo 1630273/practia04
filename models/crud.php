@@ -70,6 +70,18 @@ class Datos extends Conexion{
 
 	}
 
+
+
+	public function ObtenerMaestros($tabla){
+		$stmt = Conexion::conectar()->prepare("SELECT no_maestro, nombre, ape_paterno,ape_materno FROM $tabla");	
+		$stmt->execute();
+
+		return $stmt->fetchAll();
+
+		$stmt->close();
+
+	}
+
 	public function ObtenerNombreU($tabla){
 		$stmt = Conexion::conectar()->prepare("SELECT no_padre, nombre, ape_paterno,ape_materno FROM $tabla");	
 		$stmt->execute();
@@ -185,9 +197,45 @@ class Datos extends Conexion{
 
 
 
+public function registroGrupoModel($datosModel, $tabla){
+
+	$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, descripcion, no_mastro) VALUES (:nombre,:des,:maestro)");	
+	
+	$stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
+	$stmt->bindParam(":des", $datosModel["des"], PDO::PARAM_STR);
+	$stmt->bindParam(":maestro", $datosModel["maestro"], PDO::PARAM_STR);
+
+	if($stmt->execute()){
+
+		return "success";
+
+	}
+
+	else{
+
+		return "error";
+
+	}
+
+	$stmt->close();
+
+}
 
 
 
+// #VISTA Grupos
+	// #-------------------------------------
+
+	public function vistaGruposModel($tabla , $tabla2){
+
+		$stmt = Conexion::conectar()->prepare("SELECT A.no_grupo, A.nombre_grupo, A.descripcion, a.no_maestro, B.nombre, B.ape_paterno, B.ape_materno FROM $tabla A INNER JOIN $tabla2 AS B ON A.no_maestro=B.no_maestro");	
+		$stmt->execute();
+
+	   return $stmt->fetchAll();
+
+		$stmt->close();
+
+	}
 
 
 
