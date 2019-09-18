@@ -49,6 +49,37 @@ class Datos extends Conexion{
 
 	}
 
+	public function visAlu($tabla){
+		$stmt = Conexion::conectar()->prepare("SELECT no_alu, nombre, ape_paterno,ape_materno FROM $tabla");	
+		$stmt->execute();
+
+		return $stmt->fetchAll();
+
+		$stmt->close();
+
+	}
+
+
+	public function ObtenerPadres($tabla){
+		$stmt = Conexion::conectar()->prepare("SELECT no_padre, nombre, ape_paterno,ape_materno FROM $tabla");	
+		$stmt->execute();
+
+		return $stmt->fetchAll();
+
+		$stmt->close();
+
+	}
+
+	public function ObtenerNombreU($tabla){
+		$stmt = Conexion::conectar()->prepare("SELECT no_padre, nombre, ape_paterno,ape_materno FROM $tabla");	
+		$stmt->execute();
+
+		return $stmt->fetchAll();
+
+		$stmt->close();
+
+	}
+
 	#VISTA USUARIOS
 	#-------------------------------------
 

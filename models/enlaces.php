@@ -76,7 +76,7 @@ class Paginas{
 		}
 		else if($enlaces == "salir"){
 
-			$module =  "views/modules/ingresar.php";
+			$module =  "views/modules/salir.php";
 		
 		}
 

@@ -42,7 +42,7 @@
 				   <label>Edad</label>
 				   <div>
 					   <input data-parsley-type="number" type="text"
-							   class="form-control" name="edadRegistro"  required name="num"
+							   class="form-control" name="edadRegistro"  required 
 							   placeholder="Ingresa Edad"/>
 				   </div>
 			  	 </div>

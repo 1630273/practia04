@@ -1,10 +1,9 @@
 
 
-<h1>USUARIOS</h1>
-
-	<table border="1">
+<div style="background-color:white " >
+	<table class="table ">
 		
-		<thead>
+		<thead style="background-color:#53D3EE">
 			
 			<tr>
 				<th>Nombre</th>
@@ -13,8 +12,8 @@
 				<th>Usuarios</th>
 				<th>Contraseña</th>
 				<th>Correo</th>
-				<th></th>
-				<th></th>
+				<th>Modificar</th>
+				<th>Eliminar</th>
 
 			</tr>
 
@@ -33,7 +32,7 @@
 		</tbody>
 
 	</table>
-
+</div>
 <?php
 
 if(isset($_GET["action"])){

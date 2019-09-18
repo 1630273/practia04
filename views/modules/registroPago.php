@@ -1,33 +1,85 @@
-<?php
-
-session_start();
-
-if(!$_SESSION["validar"]){
-
-	header("location:index.php?action=ingresar");
-
-	exit();
-
-}
-
-?>
 
 
-<h1>REGISTRO DE PAGO</h1>
 
-<form method="POST">
+<div class="row ">
+   
+   <div class="col-lg-6  " >
+   
+	   <div class="card-box  ">
+		   <h3 class="header-title m-t-0">Registro de Pagos</h3>
+	   
+		   <form method="POST" >
+		   <div class="form-group">
+				   <label>Selecciona Padre</label>
+				   <div>  
+				   <select name="padre" class="form-control">
+						<?php 
+						 	$verPadres = Datos::ObtenerPadres("padres");
+						 
+						 	foreach ($verPadres as $a): ?>
+								 <option value="<?php echo $a['no_padre']?>"><?php echo $a['nombre'].' '.$a['ape_paterno'].' '.$a['ape_materno']?></option>
+						<?php endforeach; ?>
+					
+					 </select>												
+						
+				   </div>
+				</div>
 
-	<input type="number" placeholder="No. Padre" name="no_padreRegistro" required>
 
-	<input type="number" placeholder="No. Usuario" name="no_usuRegistro" required>
+		   <div class="form-group">
+				   <label>Selecciona Alumno</label>
+				   <div>  
+				   <select name="alumno" class="form-control">
+						<?php 
+						 	$vistaAlumno = Datos::visAlu("alumnos");
+						 
+						 	foreach ($vistaAlumno as $a): ?>
+								 <option value="<?php echo $a['no_alu']?>"><?php echo $a['nombre'].' '.$a['ape_paterno'].' '.$a['ape_materno']?></option>
+						<?php endforeach; ?>
+					
+					 </select>												
+						
+				   </div>
+				</div>
 
-	<input type="text" placeholder="Descripcion" name="descripcionRegistro"  required>
+				
+				   
 
-	<input type="number" placeholder="Monto" name="montoRegistro"  required>
+				<div class="form-group">
+				   <label>Descripcion</label>
+				   <div>
+					   <input  type="text"
+							   class="form-control" name="descripcionRegistro" required
+							   placeholder="Ingresa Descripcion"/>
+				   </div>
+				</div>
+		   
+				   <div class="form-group">
+				   <label>Monto</label>
+				   <div>
+					   <input data-parsley-type="number" type="number"
+							   class="form-control" name="montoRegistro" required 
+							   placeholder="Ingresa Monto"/>
+				   </div>
+			  	 </div>
+			   
+			   <div class="form-group">
+				   <div>
+					   <button type="submit" value="Enviar" class="btn btn-block  btn-custom waves-effect waves-light">
+						   Realizar
+					   </button>
+				   
+				   </div>
+			   </div>
+		   </form>
+	   </div>
+   </div>
 
-	<input type="submit" value="Enviar">
+</div>
 
-</form>
+
+
+
 
 <?php
 

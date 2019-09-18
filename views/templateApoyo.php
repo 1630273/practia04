@@ -83,24 +83,6 @@ if(!$_SESSION["validar"]){
                                     <i class="fi-air-play"></i><span class="badge badge-danger badge-pill pull-right">7</span> <span> Inicio </span>
                                 </a>
                             </li>
-
-                            <li>
-                                <a href="javascript: void(0);"><i class="fa fa-graduation-cap"></i> <span> Alumnos </span> <span class="menu-arrow"></span></a>
-                                <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="template.php?action=registroAlu">Agregar</a></li>
-                                    <li><a href="template.php?action=alumnos">Ver Alumnos</a></li>
-                        
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="javascript: void(0);"><i class="fa fa-briefcase"></i></i></i><span> Maestros </span> <span class="menu-arrow"></span></a>
-                                <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="template.php?action=registroMaestro">Agregar</a></li>
-                                    <li><a href="template.php?action=maestros">Ver Maestros</a></li>
-                                 </ul>
-                            </li>
-
                             <li>
                                 <a href="javascript: void(0);"><i class="fa fa-dollar"></i><span> Pagos </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
@@ -109,27 +91,6 @@ if(!$_SESSION["validar"]){
                         
                                 </ul>
                             </li>
-
-                            <li>
-                                <a href="javascript: void(0);"><i class="fa fa-black-tie"></i> <span> Padres </span> <span class="menu-arrow"></span></a>
-                                <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="template.php?action=registroPadre">Agregar</a></li>
-                                    <li><a href="template.php?action=padres">Ver Padres</a></li>
-                        
-                                </ul>
-                            </li>
-
-                            
-
-                            <li>
-                                <a href="javascript: void(0);"><i class="fa fa-user"></i></i><span> Usuarios </span> <span class="menu-arrow"></span></a>
-                                <ul class="nav-second-level" aria-expanded="false">
-                                <li><a href="template.php?action=registro">Agregar</a></li>
-                                    <li><a href="template.php?action=usuarios">Ver Usuarios</a></li>
-                        
-                                </ul>
-                            </li>
-
                            
                        
 

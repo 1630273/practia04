@@ -16,7 +16,7 @@
                             </h2>
 
                            
-                                        <label >Bienvenido CHIQUITA</label>
+                                        <h1 >Bienvenido </h1>
                                      
 
                            

@@ -56,11 +56,20 @@
 				   </div>
 			   </div>
 			   <div class="form-group">
-				   <label>No.</label>
-				   <div>
-					   <input  class="form-control" type="number" placeholder="No. Del Alumno" name="no_aluRegistro"/>
+				   <label>Selecciona Alumno</label>
+				   <div>  
+				   <select name="alumno" class="form-control">
+						<?php 
+						 	$vistaAlumno = Datos::visAlu("alumnos");
+						 
+						 	foreach ($vistaAlumno as $a): ?>
+								 <option value="<?php echo $a['no_alu']?>"><?php echo $a['nombre'].' '.$a['ape_paterno'].' '.$a['ape_materno']?></option>
+						<?php endforeach; ?>
+					
+					 </select>												
+						
 				   </div>
-			   </div>
+				</div>
 			   
 			   <div class="form-group">
 				   <div>

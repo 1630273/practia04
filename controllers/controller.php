@@ -75,6 +75,10 @@ class MvcController{
 
 	}
 
+	#Nombre DE USUARIO
+
+	
+
 	#INGRESO DE USUARIOS
 	#------------------------------------
 	public function ingresoUsuarioController(){
@@ -87,7 +91,8 @@ class MvcController{
 			$respuesta = Datos::ingresoUsuarioModel($datosController, "usuarios");
 
 			if($respuesta["usuario"] == $_POST["usuarioIngreso"] && $respuesta["password"] == $_POST["passwordIngreso"]){
-
+				
+				$nombre["usuarioIngreso"]=$_POST["usuarioIngreso"];
 				session_start();
 
 				$_SESSION["validar"] = true;
@@ -122,14 +127,27 @@ class MvcController{
 				<td>'.$item["usuario"].'</td>
 				<td>'.$item["password"].'</td>
 				<td>'.$item["email"].'</td>
-				<td><a href="index.php?action=editar&no_usu='.$item["no_usu"].'"><button>Editar</button></a></td>
-				<td><a href="index.php?action=usuarios&no_usuBorrar='.$item["no_usu"].'"><button>Borrar</button></a></td>
+				<td><a href="index.php?action=editar&no_usu='.$item["no_usu"].'" class="btn btn-sm btn-custom"><i class="fa fa-edit"></i></a></td>
+				<td><a href="index.php?action=usuarios&no_usuBorrar='.$item["no_usu"].'"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
 			</tr>';
 
 		}
 
 	}
 
+	public function visualizarAlumnos(){
+
+
+		if(isset($_POST["usuarioIngreso"])){
+
+
+
+			 $padre=$_POST["usuarioIngreso"];
+
+			$respuesta = Datos::visAlu("alumnos");
+
+		}
+		}
 	#EDITAR USUARIO
 	#------------------------------------
 
@@ -181,7 +199,7 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				header("location:index.php?action=cambio");
+				header("location:template.php?action=cambio");
 
 			}
 
@@ -207,7 +225,7 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				header("location:index.php?action=usuarios");
+				header("location:template.php?action=usuarios");
 			
 			}
 
@@ -263,13 +281,13 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				header("location:index.php?action=okkk");
+				header("location:template.php?action=okkk");
 
 			}
 
 			else{
 
-				header("location:index.php");
+				header("location:template.php");
 			}
 
 		}
@@ -290,8 +308,8 @@ class MvcController{
 	 			<td>'.$item["nombre"].'</td>
 	 			<td>'.$item["ape_paterno"].'</td>
 	 			<td>'.$item["ape_materno"].'</td>
-	 			<td><a href="index.php?action=maestroEditar&no_maestro='.$item["no_maestro"].'"><button>Editar</button></a></td>
-	 			<td><a href="index.php?action=maestros&no_maestroBorrar='.$item["no_maestro"].'"><button>Borrar</button></a></td>
+	 			<td><a href="index.php?action=maestroEditar&no_maestro='.$item["no_maestro"].'"class="btn btn-sm btn-custom"><i class="fa fa-edit"></i></a></td>
+	 			<td><a href="index.php?action=maestros&no_maestroBorrar='.$item["no_maestro"].'"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
 	 		</tr>';
 
 	 	}
@@ -337,7 +355,7 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:index.php?action=cambiooo");
+	 			header("location:template.php?action=cambiooo");
 
 	 		}
 
@@ -363,7 +381,7 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:index.php?action=maestros");
+	 			header("location:template.php?action=maestros");
 			
 	 		}
 
@@ -440,8 +458,8 @@ class MvcController{
 	 			<td>'.$item["ape_paterno"].'</td>
 	 			<td>'.$item["ape_materno"].'</td>
 	 			<td>'.$item["edad"].'</td>
-	 			<td><a href="template.php?action=alumnoEditar&no_alu='.$item["no_alu"].'"><button>Editar</button></a></td>
-	 			<td><a href="template.php?action=alumnos&no_aluBorrar='.$item["no_alu"].'"><button>Borrar</button></a></td>
+	 			<td><a href="template.php?action=alumnoEditar&no_alu='.$item["no_alu"].'" class="btn btn-sm btn-custom"><i class="fa fa-edit"></i></a></td>
+	 			<td><a href="template.php?action=alumnos&no_aluBorrar='.$item["no_alu"].'" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
 	 		</tr>';
 
 	 	}
@@ -603,8 +621,8 @@ class MvcController{
 	 			<td>'.$item["ape_materno"].'</td>
 	 			<td>'.$item["telefono"].'</td>
 	 			<td>'.$item["email"].'</td>
-	 			<td><a href="template.php?action=padresEditar&no_padre='.$item["no_padre"].'"><button>Editar</button></a></td>
-	 			<td><a href="template.php?action=padres&no_padreBorrar='.$item["no_padre"].'"><button>Borrar</button></a></td>
+	 			<td><a href="template.php?action=padresEditar&no_padre='.$item["no_padre"].'"class="btn btn-sm btn-custom"><i class="fa fa-edit"></i></a></td>
+	 			<td><a href="template.php?action=padres&no_padreBorrar='.$item["no_padre"].'"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
 	 		</tr>';
 
 	 	}
@@ -760,8 +778,8 @@ class MvcController{
 	 			<td>'.$item["no_usu"].'</td>
 	 			<td>'.$item["descripcion"].'</td>
 	 			<td>'.$item["monto"].'</td>
-	 			<td><a href="template.php?action=pagosEditar&no_pago='.$item["no_pago"].'"><button>Editar</button></a></td>
-	 			<td><a href="template.php?action=pagos&no_pagoBorrar='.$item["no_pago"].'"><button>Borrar</button></a></td>
+	 			<td><a href="template.php?action=pagosEditar&no_pago='.$item["no_pago"].'"class="btn btn-sm btn-custom"><i class="fa fa-edit"></i></a></td>
+	 			<td><a href="template.php?action=pagos&no_pagoBorrar='.$item["no_pago"].'"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
 	 		</tr>';
 
 	 	}

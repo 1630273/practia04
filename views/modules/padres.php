@@ -1,22 +1,9 @@
-<?php
 
-session_start();
 
-if(!$_SESSION["validar"]){
-
-	header("location:index.php?action=ingresar");
-
-	exit();
-
-}
-
-?>
-
-<h1>PADRES</h1>
-
-	<table border="1">
+<div style="background-color:white " >
+	<table class="table ">
 		
-		<thead>
+		<thead style="background-color:#53D3EE">
 			
 			<tr>
 				<th>Nombre</th>
@@ -24,8 +11,8 @@ if(!$_SESSION["validar"]){
 				<th>Apellido Materno</th>
 				<th>Telefono</th>
 				<th>Correo</th>
-				<th></th>
-				<th></th>
+				<th>Modificar</th>
+				<th>Eliminar</th>
 
 			</tr>
 
@@ -44,7 +31,7 @@ if(!$_SESSION["validar"]){
 		</tbody>
 
 	</table>
-
+</div>
 <?php
 
 if(isset($_GET["action"])){
