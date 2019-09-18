@@ -46,6 +46,18 @@
 							   placeholder="Ingresa Edad"/>
 				   </div>
 			  	 </div>
+
+			  	  <div class="form-group">
+				   <label>Selecciona Padre</label>
+				   <div>  
+				   <select name="no_padreRegistro" class="form-control">
+						<?php $vistaPadre = Datos::ObtenerPadres("padres"); foreach ($vistaPadre as $a): ?>
+								 <option value="<?php echo $a['no_padre'] ?>"><?php echo $a['nombre'].' '.$a['ape_paterno'].' '.$a['ape_materno'] ?> </option> <?php endforeach; ?>
+					
+					 </select>												
+						
+				   </div>
+				</div>
 			   
 			   <div class="form-group">
 				   <div>
