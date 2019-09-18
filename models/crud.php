@@ -8,7 +8,7 @@ class Datos extends Conexion{
 	#-------------------------------------
 	public function registroUsuarioModel($datosModel, $tabla){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, ape_paterno, ape_materno, usuario, password, email) VALUES (:nombre,:paterno,:materno, :usuario, :password, :email)");	
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, ape_paterno, ape_materno, usuario, password, email, no_perfil) VALUES (:nombre,:paterno,:materno, :usuario, :password, :email, :no_perfil)");	
 		
 		$stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":paterno", $datosModel["paterno"], PDO::PARAM_STR);
@@ -16,6 +16,7 @@ class Datos extends Conexion{
 		$stmt->bindParam(":usuario", $datosModel["usuario"], PDO::PARAM_STR);
 		$stmt->bindParam(":password", $datosModel["password"], PDO::PARAM_STR);
 		$stmt->bindParam(":email", $datosModel["email"], PDO::PARAM_STR);
+		$stmt->bindParam(":no_perfil", $datosModel["no_perfil"], PDO::PARAM_STR);
 
 		if($stmt->execute()){
 
@@ -37,7 +38,7 @@ class Datos extends Conexion{
 	#-------------------------------------
 	public function ingresoUsuarioModel($datosModel, $tabla){
 
-		$stmt = Conexion::conectar()->prepare("SELECT no_usu, usuario, password FROM $tabla WHERE usuario = :usuario");	
+		$stmt = Conexion::conectar()->prepare("SELECT no_usu, usuario, password, no_perfil FROM $tabla WHERE usuario = :usuario");	
 
 		$stmt->bindParam(":usuario", $datosModel["usuario"], PDO::PARAM_STR);
 
@@ -48,6 +49,8 @@ class Datos extends Conexion{
 		$stmt->close();
 
 	}
+
+#------------------------------------------------------#
 
 	public function visAlu($tabla){
 		$stmt = Conexion::conectar()->prepare("SELECT no_alu, nombre, ape_paterno,ape_materno FROM $tabla");	
@@ -74,6 +77,18 @@ class Datos extends Conexion{
 
 	public function ObtenerMaestros($tabla){
 		$stmt = Conexion::conectar()->prepare("SELECT no_maestro, nombre, ape_paterno,ape_materno FROM $tabla");	
+
+		$stmt->execute();
+
+		return $stmt->fetchAll();
+
+		$stmt->close();
+
+	}
+
+	public function ObtenerPerfil($tabla){
+		$stmt = Conexion::conectar()->prepare("SELECT no_perfil, descripcion FROM $tabla");	
+
 		$stmt->execute();
 
 		return $stmt->fetchAll();
@@ -377,12 +392,13 @@ public function registroGrupoModel($datosModel, $tabla){
 
 		public function registroAlumnoModel($datosModel, $tabla){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, ape_paterno, ape_materno, edad) VALUES (:nombre,:paterno,:materno, :edad)");	
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, ape_paterno, ape_materno, edad, no_padre) VALUES (:nombre,:paterno,:materno, :edad, :no_padre)");	
 		
 		$stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":paterno", $datosModel["paterno"], PDO::PARAM_STR);
 		$stmt->bindParam(":materno", $datosModel["materno"], PDO::PARAM_STR);
 		$stmt->bindParam(":edad", $datosModel["edad"], PDO::PARAM_STR);
+		$stmt->bindParam(":no_padre", $datosModel["no_padre"], PDO::PARAM_STR);
 
 
 		if($stmt->execute()){
@@ -521,14 +537,13 @@ public function registroGrupoModel($datosModel, $tabla){
 
 		public function registroPadreModel($datosModel, $tabla){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, ape_paterno, ape_materno, telefono, email, no_alu) VALUES (:nombre,:paterno,:materno, :telefono, :email, :no_alu)");	
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, ape_paterno, ape_materno, telefono, email) VALUES (:nombre,:paterno,:materno,:telefono,:email)");	
 		
 		$stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":paterno", $datosModel["paterno"], PDO::PARAM_STR);
 		$stmt->bindParam(":materno", $datosModel["materno"], PDO::PARAM_STR);
 		$stmt->bindParam(":telefono", $datosModel["telefono"], PDO::PARAM_STR);
 		$stmt->bindParam(":email", $datosModel["email"], PDO::PARAM_STR);
-		$stmt->bindParam(":no_alu", $datosModel["no_alu"], PDO::PARAM_STR);
 
 
 		if($stmt->execute()){

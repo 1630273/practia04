@@ -55,21 +55,7 @@
 							   parsley-type="email" placeholder="Ingresar Correo"/>
 				   </div>
 			   </div>
-			   <div class="form-group">
-				   <label>Selecciona Alumno</label>
-				   <div>  
-				   <select name="alumno" class="form-control">
-						<?php 
-						 	$vistaAlumno = Datos::visAlu("alumnos");
-						 
-						 	foreach ($vistaAlumno as $a): ?>
-								 <option value="<?php echo $a['no_alu']?>"><?php echo $a['nombre'].' '.$a['ape_paterno'].' '.$a['ape_materno']?></option>
-						<?php endforeach; ?>
-					
-					 </select>												
-						
-				   </div>
-				</div>
+
 			   
 			   <div class="form-group">
 				   <div>
@@ -100,8 +86,6 @@ if(isset($_GET["action"])){
 
 		echo "Registro Exitoso";
 	
-	}else{
-		echo "fallo";
 	}
 
 }

@@ -79,15 +79,15 @@ if(!$_SESSION["validar"]){
                             <!--<li class="menu-title">Navigation</li>-->
 
                             <li>
-                                <a href="template.php?action=inicio">
+                                <a href="templateApoyo.php?action=inicio">
                                     <i class="fi-air-play"></i><span class="badge badge-danger badge-pill pull-right">7</span> <span> Inicio </span>
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript: void(0);"><i class="mdi mdi-square-inc-cash"></i></i><span> Pagos </span> <span class="menu-arrow"></span></a>
                                 <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="template.php?action=registroPago">Agregar</a></li>
-                                    <li><a href="template.php?action=pagos">Ver Pagos</a></li>
+                                    <li><a href="templateApoyo.php?action=registroPago">Agregar</a></li>
+                                    <li><a href="templateApoyo.php?action=pagos">Ver Pagos</a></li>
                         
                                 </ul>
                             </li>

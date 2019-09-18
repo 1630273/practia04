@@ -9,13 +9,27 @@
 	   
 		   <form method="POST">
 		   <div class="form-group">
-				   <label>No.</label>
+				   <label>Usuario</label>
 				   <div>
-					   <input data-parsley-type="number" type="text"
+					   <input type="text"
 							   class="form-control" name="usuarioRegistro"
-							   placeholder="Numero de empelado"/>
+							   placeholder="Nombre de usuario"/>
 				   </div>
 			   </div>
+
+			<div class="form-group">
+				   <label>Contraseña</label>
+				   <div>
+					   <input type="password" id="pass2" name="pass" class="form-control" required
+							   placeholder="Password"/>
+				   </div>
+				   <label>Confirmar Contraseña</label>
+				   <div class="mt-2">
+					   <input type="password" class="form-control" name="passwordRegistro" required
+							   data-parsley-equalto="#pass2"
+							   placeholder="Re-Type Password"/>
+				   </div>
+			</div>
 			   
 			   <div class="form-group">
 				   <label>Nombre</label>
@@ -45,19 +59,6 @@
 				   </div>
 				</div>
 
-			   <div class="form-group">
-				   <label>Contraseña</label>
-				   <div>
-					   <input type="password" id="pass2" name="pass" class="form-control" required
-							   placeholder="Password"/>
-				   </div>
-				   <label>Confirmar Contraseña</label>
-				   <div class="mt-2">
-					   <input type="password" class="form-control" name="passwordRegistro" required
-							   data-parsley-equalto="#pass2"
-							   placeholder="Re-Type Password"/>
-				   </div>
-			   </div>
 
 			   <div class="form-group">
 				   <label>Correo</label>
@@ -66,6 +67,18 @@
 							   parsley-type="email" placeholder="Ingresar Correo"/>
 				   </div>
 			   </div>
+
+			   <div class="form-group">
+				   <label>Selecciona Perfil</label>
+				   <div>  
+				   <select name="no_perfilRegistro" class="form-control">
+						<?php $vistaPerfil = Datos::ObtenerPerfil("perfil"); foreach ($vistaPerfil as $a): ?>
+								 <option value="<?php echo $a['no_perfil'] ?>"><?php echo $a['descripcion'] ?> </option> <?php endforeach; ?>
+					
+					 </select>												
+						
+				   </div>
+				</div>
 			   
 		   
 		   

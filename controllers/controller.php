@@ -56,7 +56,9 @@ class MvcController{
 
 				"paterno"=>$_POST["paternoRegistro"],
 
-				"materno"=>$_POST["maternoRegistro"]);
+				"materno"=>$_POST["maternoRegistro"],
+
+				"no_perfil"=>$_POST["no_perfilRegistro"]);
 
 			$respuesta = Datos::registroUsuarioModel($datosController, "usuarios");
 
@@ -85,8 +87,10 @@ class MvcController{
 
 		if(isset($_POST["usuarioIngreso"])){
 
-			$datosController = array( "usuario"=>$_POST["usuarioIngreso"], 
-								      "password"=>$_POST["passwordIngreso"]);
+			$datosController = array( 
+				"usuario"=>$_POST["usuarioIngreso"], 
+								      
+				"password"=>$_POST["passwordIngreso"]);
 
 			$respuesta = Datos::ingresoUsuarioModel($datosController, "usuarios");
 
@@ -97,7 +101,11 @@ class MvcController{
 
 				$_SESSION["validar"] = true;
 
-				header("location:views/template.php?action=inicio");
+				if ($respuesta["no_perfil"] == 1) {
+					header("location:views/template.php?action=inicio");
+				}else{
+					header("location:views/templateApoyo.php?action=inicio");
+				}
 
 			}
 
@@ -474,7 +482,9 @@ class MvcController{
 
 				"materno"=>$_POST["maternoRegistro"],
 
-				"edad" =>$_POST["edadRegistro"]);
+				"edad" =>$_POST["edadRegistro"],
+
+				"no_padre" =>$_POST["no_padreRegistro"]);
 
 			$respuesta = Datos::registroAlumnoModel($datosController, "alumnos");
 
@@ -624,9 +634,7 @@ class MvcController{
 
 				"telefono" =>$_POST["telRegistro"],
 
-				"email"=>$_POST["emailRegistro"],
-
-				"no_alu"=>$_POST["no_aluRegistro"]);
+				"email"=>$_POST["emailRegistro"]);
 
 			$respuesta = Datos::registroPadreModel($datosController, "padres");
 
