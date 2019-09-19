@@ -39,6 +39,21 @@ class MvcController{
 
 	}
 
+
+	
+	public function visualizarAlumnos(){
+
+
+		if(isset($_POST["usuarioIngreso"])){
+
+
+
+			 $padre=$_POST["usuarioIngreso"];
+
+			$respuesta = Datos::visAlu("alumnos");
+
+		}
+		}
 	#REGISTRO DE USUARIOS
 	#------------------------------------
 	public function registroUsuarioController(){
@@ -64,7 +79,8 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				header("location:template.php?action=ok");
+				header("location:template.php?action=usuarios");
+				ob_end_flush();
 
 			}
 
@@ -103,8 +119,10 @@ class MvcController{
 
 				if ($respuesta["no_perfil"] == 1) {
 					header("location:views/template.php?action=inicio");
+					ob_end_flush();
 				}else{
 					header("location:views/templateApoyo.php?action=inicio");
+					ob_end_flush();
 				}
 
 			}
@@ -112,6 +130,7 @@ class MvcController{
 			else{
 
 				header("location:index.php?action=fallo");
+				ob_end_flush();
 
 			}
 
@@ -144,19 +163,6 @@ class MvcController{
 
 	}
 
-	public function visualizarAlumnos(){
-
-
-		if(isset($_POST["usuarioIngreso"])){
-
-
-
-			 $padre=$_POST["usuarioIngreso"];
-
-			$respuesta = Datos::visAlu("alumnos");
-
-		}
-		}
 	#EDITAR USUARIO
 	#------------------------------------
 
@@ -166,20 +172,74 @@ class MvcController{
 		$respuesta = Datos::editarUsuarioModel($datosController, "usuarios");
 
 		echo'<input type="hidden" value="'.$respuesta["no_usu"].'" name="no_usuEditar">
+		<div class="form-group">
+		<label>Nombre</label>
+		<div>
+			 <input text="text" class="form-control" value="'.$respuesta["nombre"].'" name="nombreEditar" required>
+			 </div>
+			 </div>
 
-			 <input text="text" value="'.$respuesta["nombre"].'" name="nombreEditar" required>
+			 <div class="form-group">
+			 <label>Apellido Paterno</label>
+			 <div>
+			 <input text="text" class="form-control" value="'.$respuesta["ape_paterno"].'" name="paternoEditar" required>
+			 </div>
+			 </div>
 
-			 <input text="text" value="'.$respuesta["ape_paterno"].'" name="paternoEditar" required>
+			 <div class="form-group">
+			 <label>Apellido Materno</label>
+			 <div>
+			 <input text="text" class="form-control" value="'.$respuesta["ape_materno"].'" name="maternoEditar" required>
+			 </div>
+			 </div>
 
-			 <input text="text" value="'.$respuesta["ape_materno"].'" name="maternoEditar" required>
+			 <div class="form-group">
+			 <label>Usuario</label>
+			 <div>
+			 <input type="text" class="form-control" value="'.$respuesta["usuario"].'" name="usuarioEditar" required>
+			 </div>
+			 </div>
 
-			 <input type="text" value="'.$respuesta["usuario"].'" name="usuarioEditar" required>
+			 <div class="form-group">
+			 <label>Contraseña</label>
+			 <div>
+			 <input type="text" class="form-control" value="'.$respuesta["password"].'" name="passwordEditar" required>
+			 </div>
+			 </div>
 
-			 <input type="text" value="'.$respuesta["password"].'" name="passwordEditar" required>
+			 <div class="form-group">
+			 <label>Correo</label>
+			 <div>
+			 <input type="email"  class="form-control" value="'.$respuesta["email"].'" name="emailEditar" required>
+			 </div>
+			 </div>
+			 
+			 <div class="form-group">
+			 <label>Selecciona Perfil</label>
+			 <div>  
+			 <select name="perfil" class="form-control">';
+				   $vistaPerfil = Datos::ObtenerPerfil("perfil");
+				    foreach ($vistaPerfil as $a): 
+						 echo'  <option value="'. $a['no_perfil'] .'">'. $a['descripcion'] .' </option> ';
+						 endforeach; 
+			  
+			 echo'  </select>												
+				  
+			 </div>
+		  </div>
+		 
+	 
 
-			 <input type="email" value="'.$respuesta["email"].'" name="emailEditar" required>
-
-			 <input type="submit" value="Actualizar">';
+		   
+			 <div class="form-group">
+			 <div>
+				 <button type="submit" value="Actualizar" class="btn btn-block btn-custom waves-effect waves-light">
+					 Actualizar
+				 </button>
+			 
+			 </div>
+		 </div>
+			 ';
 
 	}
 
@@ -202,13 +262,16 @@ class MvcController{
 
 			"paterno"=>$_POST["paternoEditar"],
 
-			"materno"=>$_POST["maternoEditar"]);
+			"materno"=>$_POST["maternoEditar"],
+			
+			"perfil"=>$_POST["perfil"]);
 			
 			$respuesta = Datos::actualizarUsuarioModel($datosController, "usuarios");
 
 			if($respuesta == "success"){
 
-				header("location:template.php?action=cambio");
+				header("location:template.php?action=usuarios");
+				ob_end_flush();
 
 			}
 
@@ -235,6 +298,7 @@ class MvcController{
 			if($respuesta == "success"){
 
 				header("location:template.php?action=usuarios");
+				ob_end_flush();
 			
 			}
 
@@ -271,7 +335,7 @@ class MvcController{
 
 
 
-		#REGISTRO DE Maestros
+		#REGISTRO DE GRUPOS
 	#------------------------------------
 	public function registroGrupoController(){
 
@@ -290,7 +354,8 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				header("location:template.php?action=grupook");
+				header("location:template.php?action=grupos");
+				ob_end_flush();
 
 			}
 
@@ -300,7 +365,7 @@ class MvcController{
 
 	}
 
-// #VISTA DE Maestro
+// #VISTA DE GRUPOS
 	// #------------------------------------
 
 	public function vistaGruposController(){
@@ -313,14 +378,118 @@ class MvcController{
 				<td>'.$item["nombre_grupo"].'</td>
 				<td>'.$item["descripcion"].'</td>
 				<td>'.$item["nombre"].' '.$item["ape_paterno"].' '.$item["ape_materno"].'</td>
-				<td><a href="index.php?action=grupoEditar&no_grupo='.$item["no_grupo"].'"class="btn btn-sm btn-custom"><i class="fa fa-edit"></i></a></td>
-				<td><a href="index.php?action=grupo&no_grupoBorrar='.$item["no_grupo"].'"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
+				<td><a href="template.php?action=grupoEditar&no_grupo='.$item["no_grupo"].'"class="btn btn-sm btn-custom"><i class="fa fa-edit"></i></a></td>
+				<td><a href="template.php?action=grupos&no_grupoBorrar='.$item["no_grupo"].'"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
 			</tr>';
 
 		}
 
 	}
 
+	
+	#EDITAR USUARIO
+	#------------------------------------
+
+	public function editarGrupoController(){
+
+		$datosController = $_GET["no_grupo"];
+		$respuesta = Datos::editarGrupoModel($datosController, "grupos");
+
+		echo'<input type="hidden" value="'.$respuesta["no_grupo"].'" name="no_grupoEditar">
+		<div class="form-group">
+		<label>Nombre</label>
+		<div>
+			 <input text="text" class="form-control" value="'.$respuesta["nombre_grupo"].'" name="nombreEditar" required>
+			 </div>
+			 </div>
+
+			 <div class="form-group">
+			 <label>Descripcion</label>
+			 <div>
+			 <input text="text" class="form-control" value="'.$respuesta["descripcion"].'" name="desEditar" required>
+			 </div>
+			 </div>
+
+			 <div class="form-group">
+			 <label>Selecciona Profesor</label>
+			 <div>  
+			 <select name="maestro" class="form-control">';
+				  
+					   $maestros = Datos::ObtenerMaestros("maestros");
+				   
+					   foreach ($maestros as $a): 
+						 echo ' <option value="'. $a['no_maestro'].'">'. $a['nombre'].' '.$a['ape_paterno'].' '.$a['ape_materno'].'  </option>';
+				 endforeach; 
+			  
+			echo'   </select>												
+				  
+			 </div>
+		  </div>
+		   
+			 <div class="form-group">
+			 <div>
+				 <button type="submit" value="Actualizar" class="btn btn-block btn-custom waves-effect waves-light">
+					 Actualizar
+				 </button>
+			 
+			 </div>
+		 </div>';
+
+	}
+
+	#ACTUALIZAR USUARIO
+	#------------------------------------
+	public function actualizarGrupoController(){
+
+		if(isset($_POST["nombreEditar"])){
+
+			$datosController = array( 
+				"no_grupo"=>$_POST["no_grupoEditar"],
+
+			"nombre"=>$_POST["nombreEditar"],
+
+			"descripcion"=>$_POST["desEditar"],
+			"maestro"=>$_POST["maestro"]);
+			
+			$respuesta = Datos::actualizarGrupoModel($datosController, "grupos");
+
+			if($respuesta == "success"){
+
+				header("location:template.php?action=grupos");
+				ob_end_flush();
+
+			}
+
+			else{
+
+				echo "error";
+
+			}
+
+		}
+	
+	}
+
+	// #BORRAR GRUPO
+	// #------------------------------------
+	public function borrarGrupoController(){
+
+		if(isset($_GET["no_grupoBorrar"])){
+
+			$datosController = $_GET["no_grupoBorrar"];
+		   
+			$respuesta = Datos::borrarGrupoModel($datosController, "grupos");
+
+			if($respuesta == "success"){
+
+				header("location:template.php?action=grupos");
+				ob_end_flush();
+		   
+			}
+
+		}
+
+	}
 
 
 		#REGISTRO DE Maestros
@@ -341,12 +510,14 @@ class MvcController{
 			if($respuesta == "success"){
 
 				header("location:template.php?action=maestros");
+				ob_end_flush();
 
 			}
 
 			else{
 
 				header("location:template.php");
+				ob_end_flush();
 			}
 
 		}
@@ -438,8 +609,8 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:template.php?action=cambiooo");
-
+	 			header("location:template.php?action=maestros");
+				 ob_end_flush();
 	 		}
 
 	 		else{
@@ -464,7 +635,8 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:template.php?action=maestros");
+				 header("location:template.php?action=maestros");
+				 ob_end_flush();
 			
 	 		}
 
@@ -515,13 +687,15 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				echo "Registro Exitoso";
-
+				header("location:template.php?action=alumnos");
+				
+				ob_end_flush();
 			}
 
 			else{
 
-				echo "Registro Fallido";
+				header("location:template.php");
+				ob_end_flush();
 			}
 
 		}
@@ -560,10 +734,68 @@ class MvcController{
 	 	$datosController = $_GET["no_alu"];
 	 	$respuesta = Datos::editarAlumnoModel($datosController, "alumnos");
 
-	 
+
+		echo' <input type="hidden" value="'.$respuesta["no_alu"].'" name="no_aluEditar">
+		<div class="form-group">
+				<label>Nombre</label>
+				<div>
+					<input text="text" class="form-control" value="'.$respuesta["nombre"].'" name="nombreEditar" required>
+				</div>
+			</div>
+		
+		<div class="form-group">
+				<label>Apellido Paterno</label>
+				<div>
+					<input text="text" class="form-control" value="'.$respuesta["ape_paterno"].'" name="paternoEditar" required>
+				</div>
+			</div>
+		<div class="form-group">
+				<label>Apellido Materno</label>
+				<div>
+					<input text="text" class="form-control" value="'.$respuesta["ape_materno"]	.'" name="maternoEditar" required>
+				</div>
+			</div>
+
+		<div class="form-group">
+					<label>Edad</label>
+					<div>
+						<input type="text" class="form-control" value="'.$respuesta["edad"]	.'" name="edadEditar" required>
+					</div>
+		</div>';
+				
+
+	echo'	<div class="form-group">
+		<label>Selecciona Padre</label>
+		<div>  
+		<select name="padre" class="form-control">';
+
+
+			 $vistaPadre = Datos::ObtenerPadres("padres");
+			  foreach ($vistaPadre as $a): 
+	echo'<option value="'. $a['no_padre'].'">'. $a['nombre_padre'].' '.$a['ape_paterno_padre'].' '.$a['ape_materno_padre'] .'</option> ';
+					 endforeach; 
+		 
+	 echo' </select>												
+			 
+		</div>
+	 </div>
+	
+
+		<div class="form-group">
+		<div>
+			<button type="submit" value="Actualizar" class="btn btn-block  btn-custom waves-effect waves-light">
+				Actualizar
+			</button>
+				
+		</div>
+		</div>';
+			
 
 	 }
 
+
+
+	 
 	// #ACTUALIZAR Alumno
 	// #------------------------------------
 	 public function actualizarAlumnoController(){
@@ -579,14 +811,15 @@ class MvcController{
 
 	 		"materno"=>$_POST["maternoEditar"],
 
-	 		"edad"=>$_POST["edadEditar"]);
+			 "edad"=>$_POST["edadEditar"],
+			 "padre"=>$_POST["padre"]);
 			
 	 		$respuesta = Datos::actualizarAlumnoModel($datosController, "alumnos");
 
 	 		if($respuesta == "success"){
 
-	 			echo "Actualización Completa!";
-
+	 			header("location:template.php?action=alumnos");
+				 ob_end_flush();
 	 		}
 
 	 		else{
@@ -611,7 +844,8 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			echo "Borrado.";
+				 header("location:template.php?action=alumnos");
+				 ob_end_flush();
 			
 	 		}
 
@@ -666,13 +900,10 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				echo "Registro Exitoso";
+				ob_end_flush();
 
-			}
-
-			else{
-
-				echo "Registro Fallido";
+				header("location:template.php");
+				ob_end_flush();
 			}
 
 		}
@@ -712,18 +943,50 @@ class MvcController{
 	 	$respuesta = Datos::editarPadreModel($datosController, "padres");
 
 	 	echo'<input type="hidden" value="'.$respuesta["no_padre"].'" name="no_padreEditar">
+		 <div class="form-group">
+		 <label>Nombre</label>
+		 <div>
+			  <input text="text"class="form-control" value="'.$respuesta["nombre_padre"].'" name="nombreEditar" required>
+			  </div>
+			  </div>
+			  <div class="form-group">
+			  <label>Apellido Paterno</label>
+			  <div>
+			  <input text="text" class="form-control" value="'.$respuesta["ape_paterno_padre"].'" name="paternoEditar" required>
+			  </div>
+			  </div>
 
-	 		 <input text="text" value="'.$respuesta["nombre_padre"].'" name="nombreEditar" required>
+			  <div class="form-group">
+			  <label>Apellido Materno</label>
+			  <div>
+			  <input text="text"class="form-control" value="'.$respuesta["ape_materno_padre"].'" name="maternoEditar" required>
+			  </div>
+			  </div>
 
-	 		 <input text="text" value="'.$respuesta["ape_paterno_padre"].'" name="paternoEditar" required>
+			  <div class="form-group">
+			  <label>Telelfono</label>
+			  <div>
+			  <input type="text" class="form-control" value="'.$respuesta["telefono"].'" name="telEditar" required>
+			  <span class="font-14 text-muted">(999) 999-9999</span>
+				   
+			  </div>
+				</div>
+			  <div class="form-group">
+			  <label>Correo</label>
+			  <div>
+	 		 <input type="text" class="form-control" value="'.$respuesta["email"].'" name="emailEditar" required>
+			  </div>
+			  </div>
 
-	 		 <input text="text" value="'.$respuesta["ape_materno_padre"].'" name="maternoEditar" required>
-
-	 		 <input type="number" value="'.$respuesta["telefono"].'" name="telEditar" required>
-
-	 		 <input type="text" value="'.$respuesta["email"].'" name="emailEditar" required>
-
-	 		 <input type="submit" value="Actualizar">';
+			  <div class="form-group">
+			  <div>
+				  <button type="submit" alue="Actualizar" class="btn btn-block  btn-custom waves-effect waves-light">
+					 Actualizar
+				  </button>
+			  
+			  </div>
+		  </div>
+	 		 ';
 
 	 }
 
@@ -750,14 +1013,15 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			echo "Actualización Completa!";
+				 header("location:template.php?action=padres");
+				 ob_end_flush();
 
 	 		}
 
 	 		else{
 
-	 			echo "Error";
-
+	 			echo "error";
+				 ob_end_flush();
 	 		}
 
 	 	}
@@ -776,7 +1040,8 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			echo "Borrado.";
+				 header("location:template.php?action=padres");
+				 ob_end_flush();
 			
 	 		}
 
@@ -826,13 +1091,14 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				echo "Registro Exitoso";
-
+				header("location:template.php?action=pagos");
+				ob_end_flush();
 			}
 
 			else{
 
-				echo "Registro Fallido";
+				header("location:template.php");
+				ob_end_flush();
 			}
 
 		}
@@ -964,7 +1230,8 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-				echo "Actualización Completa!";
+				 header("location:template.php?action=pagos");
+				 ob_end_flush();
 
 			}
 
@@ -989,7 +1256,8 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			echo "Borrado.";
+				 header("location:template.php?action=pagos");
+				 ob_end_flush();
 			
 	 		}
 

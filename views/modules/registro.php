@@ -21,13 +21,13 @@
 				   <label>Contraseña</label>
 				   <div>
 					   <input type="password" id="pass2" name="pass" class="form-control" required
-							   placeholder="Password"/>
+							   placeholder="Ingresa Contraseña"/>
 				   </div>
 				   <label>Confirmar Contraseña</label>
 				   <div class="mt-2">
 					   <input type="password" class="form-control" name="passwordRegistro" required
 							   data-parsley-equalto="#pass2"
-							   placeholder="Re-Type Password"/>
+							   placeholder="Repita Contraseña"/>
 				   </div>
 			</div>
 			   
@@ -85,7 +85,7 @@
 			   
 			   <div class="form-group">
 				   <div>
-					   <button type="submit" value="Enviar" class="btn btn-custom waves-effect waves-light">
+					   <button type="submit" value="Enviar" class="btn btn-block btn-custom waves-effect waves-light">
 						   Agregar
 					   </button>
 				   
@@ -109,8 +109,6 @@ if(isset($_GET["action"])){
 
 		echo "Registro Exitoso";
 	
-	}else{
-		echo "Registro Fallido";
 	}
 
 }

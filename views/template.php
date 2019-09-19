@@ -20,6 +20,9 @@ if(!$_SESSION["validar"]){
 
     exit();
 }
+
+
+ob_start();
 ?>
 <!DOCTYPE html>
 <html>
