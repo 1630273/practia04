@@ -52,7 +52,7 @@ class Datos extends Conexion{
 
 #------------------------------------------------------#
 
-	public function visAlu($tabla){
+	public function ObtenerAlumnos($tabla){
 		$stmt = Conexion::conectar()->prepare("SELECT no_alu, nombre, ape_paterno,ape_materno FROM $tabla");	
 		$stmt->execute();
 
@@ -64,7 +64,7 @@ class Datos extends Conexion{
 
 
 	public function ObtenerPadres($tabla){
-		$stmt = Conexion::conectar()->prepare("SELECT no_padre, nombre, ape_paterno,ape_materno FROM $tabla");	
+		$stmt = Conexion::conectar()->prepare("SELECT no_padre, nombre_padre, ape_paterno_padre,ape_materno_padre FROM $tabla");	
 		$stmt->execute();
 
 		return $stmt->fetchAll();
@@ -110,9 +110,10 @@ class Datos extends Conexion{
 	#VISTA USUARIOS
 	#-------------------------------------
 
-	public function vistaUsuariosModel($tabla){
+	public function vistaUsuariosModel($tabla , $tabla2){
 
-		$stmt = Conexion::conectar()->prepare("SELECT no_usu, nombre, ape_paterno, ape_materno, usuario, password, email FROM $tabla");	
+		$stmt = Conexion::conectar()->prepare("SELECT  A.no_usu, A.nombre, A.ape_paterno, A.ape_materno, A.usuario, A.password, A.email , b.descripcion FROM $tabla A INNER JOIN $tabla2 b on a.no_perfil  = b.no_perfil
+		");	
 		$stmt->execute();
 
 		return $stmt->fetchAll();
@@ -214,7 +215,7 @@ class Datos extends Conexion{
 
 public function registroGrupoModel($datosModel, $tabla){
 
-	$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, descripcion, no_mastro) VALUES (:nombre,:des,:maestro)");	
+	$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre_grupo, descripcion, no_maestro) VALUES (:nombre,:des,:maestro)");	
 	
 	$stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
 	$stmt->bindParam(":des", $datosModel["des"], PDO::PARAM_STR);
@@ -421,9 +422,9 @@ public function registroGrupoModel($datosModel, $tabla){
 	// #VISTA Maestros
 	// #-------------------------------------
 
-	 public function vistaAlumnosModel($tabla){
+	 public function vistaAlumnosModel($tabla,$tabla2){
 
-	 	$stmt = Conexion::conectar()->prepare("SELECT no_alu, nombre, ape_paterno, ape_materno, edad FROM $tabla");	
+	 	$stmt = Conexion::conectar()->prepare("SELECT b.no_alu, A.nombre_padre, A.ape_paterno_padre, A.ape_materno_padre, B.nombre, B.ape_paterno, B.ape_materno, B.edad FROM $tabla2 A INNER JOIN $tabla AS B ON A.no_padre=B.no_padre;");	
 	 	$stmt->execute();
 
 		return $stmt->fetchAll();
@@ -537,7 +538,7 @@ public function registroGrupoModel($datosModel, $tabla){
 
 		public function registroPadreModel($datosModel, $tabla){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre, ape_paterno, ape_materno, telefono, email) VALUES (:nombre,:paterno,:materno,:telefono,:email)");	
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (nombre_padre, ape_paterno_padre, ape_materno_padre, telefono, email) VALUES (:nombre,:paterno,:materno,:telefono,:email)");	
 		
 		$stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":paterno", $datosModel["paterno"], PDO::PARAM_STR);
@@ -568,7 +569,7 @@ public function registroGrupoModel($datosModel, $tabla){
 
 	 public function vistaPadresModel($tabla){
 
-	 	$stmt = Conexion::conectar()->prepare("SELECT no_padre, nombre, ape_paterno, ape_materno, telefono, email FROM $tabla");	
+	 	$stmt = Conexion::conectar()->prepare("SELECT no_padre, nombre_padre, ape_paterno_padre, ape_materno_padre, telefono, email FROM $tabla");	
 	 	$stmt->execute();
 
 		return $stmt->fetchAll();
@@ -582,7 +583,7 @@ public function registroGrupoModel($datosModel, $tabla){
 
 	 public function editarPadreModel($datosModel, $tabla){
 
-	 	$stmt = Conexion::conectar()->prepare("SELECT no_padre, nombre, ape_paterno, ape_materno, telefono, email FROM $tabla WHERE no_padre = :no_padre");
+	 	$stmt = Conexion::conectar()->prepare("SELECT no_padre, nombre_padre, ape_paterno_padre, ape_materno_padre, telefono, email FROM $tabla WHERE no_padre = :no_padre");
 
 	 	$stmt->bindParam(":no_padre", $datosModel, PDO::PARAM_INT);	
 
@@ -599,7 +600,7 @@ public function registroGrupoModel($datosModel, $tabla){
 
 	 public function actualizarPadreModel($datosModel, $tabla){
 
-	 	$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, ape_paterno = :paterno, ape_materno = :materno, telefono = :telefono, email = :email WHERE no_padre = :no_padre");
+	 	$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre_padre = :nombre, ape_paterno_padre = :paterno, ape_materno_padre = :materno, telefono = :telefono, email = :email WHERE no_padre = :no_padre");
 
 	 	$stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
 	 	$stmt->bindParam(":paterno", $datosModel["paterno"], PDO::PARAM_STR);
@@ -682,7 +683,7 @@ public function registroGrupoModel($datosModel, $tabla){
 		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (no_padre, no_usu, descripcion, monto) VALUES (:no_padre,:no_usu,:descripcion, :monto)");	
 		
 		$stmt->bindParam(":no_padre", $datosModel["no_padre"], PDO::PARAM_STR);
-		$stmt->bindParam(":no_usu", $datosModel["no_usu"], PDO::PARAM_STR);
+		$stmt->bindParam(":no_usu", $datosModel["no_alu"], PDO::PARAM_STR);
 		$stmt->bindParam(":descripcion", $datosModel["descripcion"], PDO::PARAM_STR);
 		$stmt->bindParam(":monto", $datosModel["monto"], PDO::PARAM_STR);
 

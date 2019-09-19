@@ -44,7 +44,7 @@
 			   
 			   <div class="form-group">
 				   <div>
-					   <button type="submit" value="Enviar" class="btn btn-block  btn-custom waves-effect waves-light">
+					   <button type="submit" value="Enviar"   class="btn btn-block  btn-custom waves-effect waves-light">
 						   Agregar
 					   </button>
 				   

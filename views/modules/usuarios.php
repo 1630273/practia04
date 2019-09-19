@@ -11,6 +11,7 @@
 				<th>Apellido Materno</th>
 				<th>Usuarios</th>
 				<th>Contraseña</th>
+				<th>Rol</th>
 				<th>Correo</th>
 				<th>Modificar</th>
 				<th>Eliminar</th>

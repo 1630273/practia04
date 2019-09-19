@@ -8,7 +8,7 @@
 	   <div class="card-box  ">
 		   <h3 class="header-title m-t-0">Registro de Alumnos</h3>
 	   
-		   <form method="POST" > 
+		   <form method="POST"  > 
 
 		   
 		   		
@@ -54,7 +54,7 @@
 				   <div>  
 				   <select name="no_padreRegistro" class="form-control">
 						<?php $vistaPadre = Datos::ObtenerPadres("padres"); foreach ($vistaPadre as $a): ?>
-								 <option value="<?php echo $a['no_padre'] ?>"><?php echo $a['nombre'].' '.$a['ape_paterno'].' '.$a['ape_materno'] ?> </option> <?php endforeach; ?>
+								 <option value="<?php echo $a['no_padre'] ?>"><?php echo $a['nombre_padre'].' '.$a['ape_paterno_padre'].' '.$a['ape_materno_padre'] ?> </option> <?php endforeach; ?>
 					
 					 </select>												
 						

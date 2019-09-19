@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-09-2019 a las 07:55:17
+-- Tiempo de generación: 19-09-2019 a las 03:54:07
 -- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.3.1
+-- Versión de PHP: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,32 +42,29 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`no_alu`, `nombre`, `ape_paterno`, `ape_materno`, `edad`, `no_padre`) VALUES
-(1, 'Brian Alejandro', 'Mireles', 'Ortiz', 21, 1),
-(3, 'Ivan', 'Castro', 'Castro', 22, 2),
-(23, 'Claud', 'Russo', 'Montano', 22, 3),
-(24, 'Rafael', 'Ramos', 'Ramos', 21, 3),
-(28, 'Juan', 'Mireles', 'Montano', 18, 1),
-(29, 'Jose', 'Wong', 'Montana', 21, 17);
+(30, 'BRIAN', 'MIRELES', 'ORTIZ', 29, 18),
+(31, 'brian', 'mora', 'guzman ', 78, 18);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `grupo`
+-- Estructura de tabla para la tabla `grupos`
 --
 
-CREATE TABLE `grupo` (
+CREATE TABLE `grupos` (
   `no_grupo` int(11) NOT NULL,
+  `nombre_grupo` varchar(45) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
-  `no_maestro` int(11) NOT NULL,
-  `no_alu` int(11) NOT NULL
+  `no_maestro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `grupo`
+-- Volcado de datos para la tabla `grupos`
 --
 
-INSERT INTO `grupo` (`no_grupo`, `descripcion`, `no_maestro`, `no_alu`) VALUES
-(1, '211', 1, 1);
+INSERT INTO `grupos` (`no_grupo`, `nombre_grupo`, `descripcion`, `no_maestro`) VALUES
+(2, 'ITI-215', 'GRUPO DE ITI', 2),
+(3, 'ITI-130', 'GRUPO MATUTUINO DE ITI', 2);
 
 -- --------------------------------------------------------
 
@@ -87,7 +84,8 @@ CREATE TABLE `maestros` (
 --
 
 INSERT INTO `maestros` (`no_maestro`, `nombre`, `ape_paterno`, `ape_materno`) VALUES
-(1, 'tonito', 'tonote', 'tonota');
+(2, 'OMAR', 'TORRES', 'ANAYAAAA'),
+(4, 'brian', 'mora', 'guzman ');
 
 -- --------------------------------------------------------
 
@@ -97,9 +95,9 @@ INSERT INTO `maestros` (`no_maestro`, `nombre`, `ape_paterno`, `ape_materno`) VA
 
 CREATE TABLE `padres` (
   `no_padre` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `ape_paterno` varchar(100) NOT NULL,
-  `ape_materno` varchar(100) NOT NULL,
+  `nombre_padre` varchar(100) NOT NULL,
+  `ape_paterno_padre` varchar(100) NOT NULL,
+  `ape_materno_padre` varchar(100) NOT NULL,
   `telefono` int(11) NOT NULL,
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -108,11 +106,9 @@ CREATE TABLE `padres` (
 -- Volcado de datos para la tabla `padres`
 --
 
-INSERT INTO `padres` (`no_padre`, `nombre`, `ape_paterno`, `ape_materno`, `telefono`, `email`) VALUES
-(1, 'Roberto', 'Mireles', 'Morata', 312124, 'roberto@gmail.com'),
-(2, 'Tomas', 'Castro', 'Pineda', 234235, 'tomas@gmail.com'),
-(3, 'Claud', 'Russo', 'tonota', 2137483647, 'claud@hotmail.com'),
-(17, 'Isaac', 'Wong', 'Chino', 123455, 'wong@hotmail.com');
+INSERT INTO `padres` (`no_padre`, `nombre_padre`, `ape_paterno_padre`, `ape_materno_padre`, `telefono`, `email`) VALUES
+(18, 'JUAN', 'TORRES', 'MOR', 834234412, 'Juan@gamil.com'),
+(19, 'brian', 'ortiz', 'guzman ', 2147483647, '1630273@upv.edu.mx');
 
 -- --------------------------------------------------------
 
@@ -127,13 +123,6 @@ CREATE TABLE `pagos` (
   `descripcion` varchar(100) NOT NULL,
   `monto` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `pagos`
---
-
-INSERT INTO `pagos` (`no_pago`, `no_padre`, `no_usu`, `descripcion`, `monto`) VALUES
-(1, 2, 7, 'Constancia', 50);
 
 -- --------------------------------------------------------
 
@@ -176,8 +165,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`no_usu`, `nombre`, `ape_paterno`, `ape_materno`, `usuario`, `password`, `email`, `no_perfil`) VALUES
-(7, 'Hector Abraham', 'Posada', 'Reyna', 'bramh24', 'abraham24', 'abbram23@gmail.com', 1),
-(8, 'Jose', 'Montantes', 'Arroyo', 'pepe123', '123', 'arroyo@gmail.com', 2);
+(10, 'BRIAN', 'MIRELES', 'ORTIZZZ', 'admin', 'admin', '1630273@upv.edu.mx', 1),
+(11, 'brian', 'mireles', 'ortiz', 'brian', '12345', '1630273@upv.edu.mx', 2);
 
 --
 -- Índices para tablas volcadas
@@ -191,12 +180,12 @@ ALTER TABLE `alumnos`
   ADD KEY `no_padre` (`no_padre`);
 
 --
--- Indices de la tabla `grupo`
+-- Indices de la tabla `grupos`
 --
-ALTER TABLE `grupo`
+ALTER TABLE `grupos`
   ADD PRIMARY KEY (`no_grupo`),
   ADD KEY `no_maestro` (`no_maestro`),
-  ADD KEY `no_alu` (`no_alu`);
+  ADD KEY `no_alu` (`nombre_grupo`);
 
 --
 -- Indices de la tabla `maestros`
@@ -239,31 +228,31 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `no_alu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `no_alu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT de la tabla `grupo`
+-- AUTO_INCREMENT de la tabla `grupos`
 --
-ALTER TABLE `grupo`
-  MODIFY `no_grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `grupos`
+  MODIFY `no_grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `maestros`
 --
 ALTER TABLE `maestros`
-  MODIFY `no_maestro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `no_maestro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `padres`
 --
 ALTER TABLE `padres`
-  MODIFY `no_padre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `no_padre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  MODIFY `no_pago` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `no_pago` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `perfil`
@@ -275,7 +264,7 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `no_usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `no_usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
@@ -288,10 +277,15 @@ ALTER TABLE `alumnos`
   ADD CONSTRAINT `alumnos_ibfk_1` FOREIGN KEY (`no_padre`) REFERENCES `padres` (`no_padre`);
 
 --
+-- Filtros para la tabla `grupos`
+--
+ALTER TABLE `grupos`
+  ADD CONSTRAINT `maestro_grupo` FOREIGN KEY (`no_maestro`) REFERENCES `maestros` (`no_maestro`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Filtros para la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  ADD CONSTRAINT `pagos_ibfk_1` FOREIGN KEY (`no_usu`) REFERENCES `usuarios` (`no_usu`),
   ADD CONSTRAINT `pagos_ibfk_2` FOREIGN KEY (`no_padre`) REFERENCES `padres` (`no_padre`);
 
 --

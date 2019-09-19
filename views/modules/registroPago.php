@@ -17,7 +17,7 @@
 						 	$verPadres = Datos::ObtenerPadres("padres");
 						 
 						 	foreach ($verPadres as $a): ?>
-								 <option value="<?php echo $a['no_padre']?>"><?php echo $a['nombre'].' '.$a['ape_paterno'].' '.$a['ape_materno']?></option>
+								 <option value="<?php echo $a['no_padre']?>"><?php echo $a['nombre_padre'].' '.$a['ape_paterno_padre'].' '.$a['ape_materno_padre']?></option>
 						<?php endforeach; ?>
 					
 					 </select>												
@@ -31,7 +31,7 @@
 				   <div>  
 				   <select name="alumno" class="form-control">
 						<?php 
-						 	$vistaAlumno = Datos::visAlu("alumnos");
+						 	$vistaAlumno = Datos::ObtenerAlumnos("alumnos");
 						 
 						 	foreach ($vistaAlumno as $a): ?>
 								 <option value="<?php echo $a['no_alu']?>"><?php echo $a['nombre'].' '.$a['ape_paterno'].' '.$a['ape_materno']?></option>

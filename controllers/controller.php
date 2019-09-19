@@ -64,14 +64,11 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				header("location:index.php?action=ok");
+				header("location:template.php?action=ok");
 
 			}
 
-			else{
-
-				header("location:index.php");
-			}
+			
 
 		}
 
@@ -124,7 +121,7 @@ class MvcController{
 
 	public function vistaUsuariosController(){
 
-		$respuesta = Datos::vistaUsuariosModel("usuarios");
+		$respuesta = Datos::vistaUsuariosModel("usuarios","perfil");
 
 
 		foreach($respuesta as $row => $item){
@@ -134,9 +131,10 @@ class MvcController{
 				<td>'.$item["ape_materno"].'</td>
 				<td>'.$item["usuario"].'</td>
 				<td>'.$item["password"].'</td>
+				<td>'.$item["descripcion"].'</td>
 				<td>'.$item["email"].'</td>
-				<td><a href="index.php?action=editar&no_usu='.$item["no_usu"].'" class="btn btn-sm btn-custom"><i class="fa fa-edit"></i></a></td>
-				<td><a href="index.php?action=usuarios&no_usuBorrar='.$item["no_usu"].'"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
+				<td><a href="template.php?action=editar&no_usu='.$item["no_usu"].'" class="btn btn-sm btn-custom"><i class="fa fa-edit"></i></a></td>
+				<td><a href="template.php?action=usuarios&no_usuBorrar='.$item["no_usu"].'"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
 			</tr>';
 
 		}
@@ -339,7 +337,7 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				header("location:template.php?action=okkk");
+				header("location:template.php?action=maestros");
 
 			}
 
@@ -366,8 +364,8 @@ class MvcController{
 	 			<td>'.$item["nombre"].'</td>
 	 			<td>'.$item["ape_paterno"].'</td>
 	 			<td>'.$item["ape_materno"].'</td>
-	 			<td><a href="index.php?action=maestroEditar&no_maestro='.$item["no_maestro"].'"class="btn btn-sm btn-custom"><i class="fa fa-edit"></i></a></td>
-	 			<td><a href="index.php?action=maestros&no_maestroBorrar='.$item["no_maestro"].'"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
+	 			<td><a href="template.php?action=maestroEditar&no_maestro='.$item["no_maestro"].'"class="btn btn-sm btn-custom"><i class="fa fa-edit"></i></a></td>
+	 			<td><a href="template.php?action=maestros&no_maestroBorrar='.$item["no_maestro"].'"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
 	 		</tr>';
 
 	 	}
@@ -383,14 +381,38 @@ class MvcController{
 	 	$respuesta = Datos::editarMaestroModel($datosController, "maestros");
 
 		 echo'<input type="hidden" value="'.$respuesta["no_maestro"].'" name="no_maestroEditar">
+		 <div class="form-group">
+		 <label>Nombre</label>
+		 <div>
+		 <input text="text" class="form-control" value="'.$respuesta["nombre"].'" name="nombreEditar" required>
+		 </div>
+		 </div>
+	
 
-		 <input text="text" value="'.$respuesta["nombre"].'" name="nombreEditar" required>
+		 <div class="form-group">
+		 <label>Apellido Paterno</label>
+		 <div>
+		 <input text="text"  class="form-control"value="'.$respuesta["ape_paterno"].'" name="paternoEditar" required>
+		 </div>
+		 </div>
+	
 
-		 <input text="text" value="'.$respuesta["ape_paterno"].'" name="paternoEditar" required>
-
-		 <input text="text" value="'.$respuesta["ape_materno"].'" name="maternoEditar" required>
-
-		 <input type="submit" value="Actualizar">';
+		 <div class="form-group">
+		 <label>Apellido Materno</label>
+		 <div>
+		 <input text="text" class="form-control" value="'.$respuesta["ape_materno"].'" name="maternoEditar" required>
+		 </div>
+		 </div>
+	
+		 <div class="form-group">
+			 <div>
+			 <button type="submit" value="Actualizar"   class="btn btn-block  btn-custom waves-effect waves-light">
+			 Actulaizar
+		 </button>
+			
+			 </div>
+			 </div>
+		';
 
 	 }
 
@@ -490,7 +512,7 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				header("location:template.php?action=okk");
+				header("location:template.php?action=alumnos");
 
 			}
 
@@ -509,7 +531,7 @@ class MvcController{
 
 	 public function vistaAlumnoController(){
 
-	 	$respuesta = Datos::vistaAlumnosModel("alumnos");
+	 	$respuesta = Datos::vistaAlumnosModel("alumnos","padres");
 
 
 	 	foreach($respuesta as $row => $item){
@@ -517,7 +539,8 @@ class MvcController{
 	 			<td>'.$item["nombre"].'</td>
 	 			<td>'.$item["ape_paterno"].'</td>
 	 			<td>'.$item["ape_materno"].'</td>
-	 			<td>'.$item["edad"].'</td>
+				 <td>'.$item["edad"].'</td>
+				 <td>'.$item["nombre_padre"].' '.$item["ape_paterno_padre"].' '.$item["ape_materno_padre"].'</td>
 	 			<td><a href="template.php?action=alumnoEditar&no_alu='.$item["no_alu"].'" class="btn btn-sm btn-custom"><i class="fa fa-edit"></i></a></td>
 	 			<td><a href="template.php?action=alumnos&no_aluBorrar='.$item["no_alu"].'" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
 	 		</tr>';
@@ -664,9 +687,9 @@ class MvcController{
 
 	 	foreach($respuesta as $row => $item){
 	 	echo'<tr>
-	 			<td>'.$item["nombre"].'</td>
-	 			<td>'.$item["ape_paterno"].'</td>
-	 			<td>'.$item["ape_materno"].'</td>
+	 			<td>'.$item["nombre_padre"].'</td>
+	 			<td>'.$item["ape_paterno_padre"].'</td>
+	 			<td>'.$item["ape_materno_padre"].'</td>
 	 			<td>'.$item["telefono"].'</td>
 	 			<td>'.$item["email"].'</td>
 	 			<td><a href="template.php?action=padresEditar&no_padre='.$item["no_padre"].'"class="btn btn-sm btn-custom"><i class="fa fa-edit"></i></a></td>
@@ -687,11 +710,11 @@ class MvcController{
 
 	 	echo'<input type="hidden" value="'.$respuesta["no_padre"].'" name="no_padreEditar">
 
-	 		 <input text="text" value="'.$respuesta["nombre"].'" name="nombreEditar" required>
+	 		 <input text="text" value="'.$respuesta["nombre_padre"].'" name="nombreEditar" required>
 
-	 		 <input text="text" value="'.$respuesta["ape_paterno"].'" name="paternoEditar" required>
+	 		 <input text="text" value="'.$respuesta["ape_paterno_padre"].'" name="paternoEditar" required>
 
-	 		 <input text="text" value="'.$respuesta["ape_materno"].'" name="maternoEditar" required>
+	 		 <input text="text" value="'.$respuesta["ape_materno_padre"].'" name="maternoEditar" required>
 
 	 		 <input type="number" value="'.$respuesta["telefono"].'" name="telEditar" required>
 
@@ -786,9 +809,9 @@ class MvcController{
 		if(isset($_POST["no_padreRegistro"])){
 
 			$datosController = array( 
-				"no_padre"=>$_POST["no_padreRegistro"],
+				"no_padre"=>$_POST["padre"],
 
-				"no_usu"=>$_POST["no_usuRegistro"],
+				"no_alu"=>$_POST["alumno"],
 
 				"descripcion"=>$_POST["descripcionRegistro"],
 

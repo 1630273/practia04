@@ -10,6 +10,7 @@
 				<th>Apellido Paterno</th>
 				<th>Apellido Materno</th>
 				<th>Edad</th>
+				<th>Padre</th>
 				<th>Modificar</th>
 				<th>Eliminar</th>
 
