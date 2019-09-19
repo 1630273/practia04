@@ -144,7 +144,8 @@ class Datos extends Conexion{
 
 	public function actualizarUsuarioModel($datosModel, $tabla){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, ape_paterno = :paterno, ape_materno = :materno, usuario = :usuario, password = :password, email = :email WHERE no_usu = :no_usu");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, ape_paterno = :paterno, ape_materno = :materno, usuario = :usuario, password = :password, email = :email 
+		,no_perfil =:perfil WHERE no_usu = :no_usu");
 
 		$stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":paterno", $datosModel["paterno"], PDO::PARAM_STR);
@@ -153,6 +154,7 @@ class Datos extends Conexion{
 		$stmt->bindParam(":password", $datosModel["password"], PDO::PARAM_STR);
 		$stmt->bindParam(":email", $datosModel["email"], PDO::PARAM_STR);
 		$stmt->bindParam(":no_usu", $datosModel["no_usu"], PDO::PARAM_INT);
+		$stmt->bindParam(":perfil", $datosModel["perfil"], PDO::PARAM_INT);
 
 		if($stmt->execute()){
 
@@ -274,11 +276,12 @@ public function registroGrupoModel($datosModel, $tabla){
 
 	public function actualizarGrupoModel($datosModel, $tabla){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre_grupo = :nombre, descripcion = :descripcion WHERE no_grupo = :no_grupo");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre_grupo = :nombre, descripcion = :descripcion , no_maestro= :maestro WHERE no_grupo = :no_grupo");
 
 		$stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":descripcion", $datosModel["descripcion"], PDO::PARAM_STR);
 		$stmt->bindParam(":no_grupo", $datosModel["no_grupo"], PDO::PARAM_INT);
+		$stmt->bindParam(":maestro", $datosModel["maestro"], PDO::PARAM_STR);
 
 		if($stmt->execute()){
 
@@ -520,13 +523,14 @@ public function registroGrupoModel($datosModel, $tabla){
 
 	 public function actualizarAlumnoModel($datosModel, $tabla){
 
-	 	$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, ape_paterno = :paterno, ape_materno = :materno, edad = :edad WHERE no_alu = :no_alu");
+	 	$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, ape_paterno = :paterno, ape_materno = :materno, edad = :edad  , no_padre = :padre WHERE no_alu = :no_alu");
 
 	 	$stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
 	 	$stmt->bindParam(":paterno", $datosModel["paterno"], PDO::PARAM_STR);
 	 	$stmt->bindParam(":materno", $datosModel["materno"], PDO::PARAM_STR);
 	 	$stmt->bindParam(":edad", $datosModel["edad"], PDO::PARAM_STR);
-	 	$stmt->bindParam(":no_alu", $datosModel["no_alu"], PDO::PARAM_INT);
+		 $stmt->bindParam(":no_alu", $datosModel["no_alu"], PDO::PARAM_INT);
+		 $stmt->bindParam(":padre", $datosModel["padre"], PDO::PARAM_INT);
 
 	 	if($stmt->execute()){
 

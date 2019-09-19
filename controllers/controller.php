@@ -210,6 +210,22 @@ class MvcController{
 			 <input type="email"  class="form-control" value="'.$respuesta["email"].'" name="emailEditar" required>
 			 </div>
 			 </div>
+			 
+			 <div class="form-group">
+			 <label>Selecciona Perfil</label>
+			 <div>  
+			 <select name="perfil" class="form-control">';
+				   $vistaPerfil = Datos::ObtenerPerfil("perfil");
+				    foreach ($vistaPerfil as $a): 
+						 echo'  <option value="'. $a['no_perfil'] .'">'. $a['descripcion'] .' </option> ';
+						 endforeach; 
+			  
+			 echo'  </select>												
+				  
+			 </div>
+		  </div>
+		 
+	 
 
 		   
 			 <div class="form-group">
@@ -243,7 +259,9 @@ class MvcController{
 
 			"paterno"=>$_POST["paternoEditar"],
 
-			"materno"=>$_POST["maternoEditar"]);
+			"materno"=>$_POST["maternoEditar"],
+			
+			"perfil"=>$_POST["perfil"]);
 			
 			$respuesta = Datos::actualizarUsuarioModel($datosController, "usuarios");
 
@@ -389,6 +407,21 @@ class MvcController{
 			 </div>
 			 </div>
 
+			 <div class="form-group">
+			 <label>Selecciona Profesor</label>
+			 <div>  
+			 <select name="maestro" class="form-control">';
+				  
+					   $maestros = Datos::ObtenerMaestros("maestros");
+				   
+					   foreach ($maestros as $a): 
+						 echo ' <option value="'. $a['no_maestro'].'">'. $a['nombre'].' '.$a['ape_paterno'].' '.$a['ape_materno'].'  </option>';
+				 endforeach; 
+			  
+			echo'   </select>												
+				  
+			 </div>
+		  </div>
 		   
 			 <div class="form-group">
 			 <div>
@@ -412,7 +445,8 @@ class MvcController{
 
 			"nombre"=>$_POST["nombreEditar"],
 
-			"descripcion"=>$_POST["desEditar"]);
+			"descripcion"=>$_POST["desEditar"],
+			"maestro"=>$_POST["maestro"]);
 			
 			$respuesta = Datos::actualizarGrupoModel($datosController, "grupos");
 
@@ -724,9 +758,24 @@ class MvcController{
 					<div>
 						<input type="text" class="form-control" value="'.$respuesta["edad"]	.'" name="edadEditar" required>
 					</div>
-		</div>
+		</div>';
 				
 
+	echo'	<div class="form-group">
+		<label>Selecciona Padre</label>
+		<div>  
+		<select name="padre" class="form-control">';
+
+
+			 $vistaPadre = Datos::ObtenerPadres("padres");
+			  foreach ($vistaPadre as $a): 
+	echo'<option value="'. $a['no_padre'].'">'. $a['nombre_padre'].' '.$a['ape_paterno_padre'].' '.$a['ape_materno_padre'] .'</option> ';
+					 endforeach; 
+		 
+	 echo' </select>												
+			 
+		</div>
+	 </div>
 	
 
 		<div class="form-group">
@@ -759,7 +808,8 @@ class MvcController{
 
 	 		"materno"=>$_POST["maternoEditar"],
 
-	 		"edad"=>$_POST["edadEditar"]);
+			 "edad"=>$_POST["edadEditar"],
+			 "padre"=>$_POST["padre"]);
 			
 	 		$respuesta = Datos::actualizarAlumnoModel($datosController, "alumnos");
 
