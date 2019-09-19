@@ -11,8 +11,6 @@
 				<th>No. Alumno</th>
 				<th>Descripción</th>
 				<th>Monto</th>
-				<th>Modificar</th>
-				<th>Eliminar</th>
 
 			</tr>
 
@@ -23,8 +21,7 @@
 			<?php
 
 			$vistaPadre = new MvcController();
-			$vistaPadre -> vistaPagoController();
-			$vistaPadre -> borrarPagoController();
+			$vistaPadre -> vistaPagoApoyoController();
 
 			?>
 
@@ -32,19 +29,6 @@
 
 	</table>
 
-<?php
-
-if(isset($_GET["action"])){
-
-	if($_GET["action"] == "cambiooooo"){
-
-		echo "Cambio Exitoso";
-	
-	}
-
-}
-
-?>
 
 
 

@@ -93,10 +93,13 @@ class MvcController{
 
 			if($respuesta["usuario"] == $_POST["usuarioIngreso"] && $respuesta["password"] == $_POST["passwordIngreso"]){
 				
-				$nombre["usuarioIngreso"]=$_POST["usuarioIngreso"];
+				
 				session_start();
 
 				$_SESSION["validar"] = true;
+				$_SESSION['user_id'] = $respuesta["no_usu"];
+				$_SESSION['nombre'] = $respuesta["nombre"];
+				$_SESSION['no_perfil'] = $respuesta["no_perfil"];
 
 				if ($respuesta["no_perfil"] == 1) {
 					header("location:views/template.php?action=inicio");
@@ -512,13 +515,13 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				header("location:template.php?action=alumnos");
+				echo "Registro Exitoso";
 
 			}
 
 			else{
 
-				header("location:template.php");
+				echo "Registro Fallido";
 			}
 
 		}
@@ -582,13 +585,13 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:template.php?action=cambioo");
+	 			echo "Actualización Completa!";
 
 	 		}
 
 	 		else{
 
-	 			echo "error";
+	 			echo "Error";
 
 	 		}
 
@@ -608,7 +611,7 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:template.php?action=alumnos");
+	 			echo "Borrado.";
 			
 	 		}
 
@@ -663,13 +666,13 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				header("location:template.php?action=okkkk");
+				echo "Registro Exitoso";
 
 			}
 
 			else{
 
-				header("location:template.php");
+				echo "Registro Fallido";
 			}
 
 		}
@@ -747,13 +750,13 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:template.php?action=cambioooo");
+	 			echo "Actualización Completa!";
 
 	 		}
 
 	 		else{
 
-	 			echo "error";
+	 			echo "Error";
 
 	 		}
 
@@ -773,7 +776,7 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:template.php?action=padres");
+	 			echo "Borrado.";
 			
 	 		}
 
@@ -806,12 +809,14 @@ class MvcController{
 	#------------------------------------
 	public function registroPagoController(){
 
-		if(isset($_POST["no_padreRegistro"])){
+		if(isset($_POST["padre"])){
 
 			$datosController = array( 
 				"no_padre"=>$_POST["padre"],
 
 				"no_alu"=>$_POST["alumno"],
+
+				"no_usu"=>$_SESSION['user_id'],
 
 				"descripcion"=>$_POST["descripcionRegistro"],
 
@@ -821,13 +826,13 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				header("location:template.php?action=okkkkk");
+				echo "Registro Exitoso";
 
 			}
 
 			else{
 
-				header("location:template.php");
+				echo "Registro Fallido";
 			}
 
 		}
@@ -847,10 +852,32 @@ class MvcController{
 	 	echo'<tr>
 	 			<td>'.$item["no_padre"].'</td>
 	 			<td>'.$item["no_usu"].'</td>
+	 			<td>'.$item["no_alu"].'</td>
 	 			<td>'.$item["descripcion"].'</td>
 	 			<td>'.$item["monto"].'</td>
 	 			<td><a href="template.php?action=pagosEditar&no_pago='.$item["no_pago"].'"class="btn btn-sm btn-custom"><i class="fa fa-edit"></i></a></td>
 	 			<td><a href="template.php?action=pagos&no_pagoBorrar='.$item["no_pago"].'"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
+	 		</tr>';
+
+	 	}
+
+	 }
+
+	 // #Vista pagos Apoyo
+
+
+	 public function vistaPagoApoyoController(){
+
+	 	$respuesta = Datos::vistaPagoModel("pagos");
+
+
+	 	foreach($respuesta as $row => $item){
+	 	echo'<tr>
+	 			<td>'.$item["no_padre"].'</td>
+	 			<td>'.$item["no_usu"].'</td>
+	 			<td>'.$item["no_alu"].'</td>
+	 			<td>'.$item["descripcion"].'</td>
+	 			<td>'.$item["monto"].'</td>
 	 		</tr>';
 
 	 	}
@@ -864,16 +891,51 @@ class MvcController{
 
 	 	$datosController = $_GET["no_pago"];
 	 	$respuesta = Datos::editarPagoModel($datosController, "pagos");
+	 	
 
-	 	echo'<input type="hidden" value="'.$respuesta["no_pago"].'" name="no_pagoEditar">
+	 	echo'<input type="hidden" value="'.$respuesta["no_pago"].'" name="no_pagoEditar">';
 
-	 		 <input text="text" value="'.$respuesta["no_padre"].'" name="no_padreEditar" required>
+	 	echo'	<div class="form-group">
+		<label>Selecciona Padre</label>
+		<div>  
+		<select name="no_padreEditar" class="form-control">';
 
-	 		 <input text="text" value="'.$respuesta["no_usu"].'" name="no_usuEditar" required>
 
-	 		 <input text="text" value="'.$respuesta["descripcion"].'" name="descripcionEditar" required>
+			 $vistaPadre = Datos::ObtenerPadres("padres");
+			  foreach ($vistaPadre as $a): 
+		echo'<option value="'. $a['no_padre'].'">'. $a['nombre_padre'].' '.$a['ape_paterno_padre'].' '.$a['ape_materno_padre'] .'</option> ';
+					 endforeach; 
+		 
+	 	echo' </select>												
+			 
+			</div>
+	 	</div>';
 
-	 		 <input type="number" value="'.$respuesta["monto"].'" name="montoEditar" required>
+	 	echo '<label for="no_usuEditar"> No. Usuario</label> <input text="text" value="'.$respuesta["no_usu"].'" name="no_usuEditar" id="no_usuEditar" required>';
+
+	 	echo'	<div class="form-group">
+				<label>Selecciona Alumno</label>
+				<div>  
+				<select name="no_aluEditar" class="form-control">';
+
+
+			 $vistaAlumno = Datos::ObtenerAlumnos("alumnos");
+			  foreach ($vistaAlumno as $a): 
+		echo'<option value="'. $a['no_alu'].'">'. $a['nombre'].' '.$a['ape_paterno'].' '.$a['ape_materno'] .'</option> ';
+					 endforeach; 
+		 
+	 	echo' </select>												
+			 
+			</div>
+	 	</div>';
+
+	 	echo '<label for="descripcionEditar"> Descripcion</label> <input text="text" value="'.$respuesta["descripcion"].'" name="descripcionEditar" id="descripcionEditar" required>
+			
+			<br>
+
+	 		<label for="montoEditar"> Monto</label> <input type="number" value="'.$respuesta["monto"].'" name="montoEditar" id="montoEditar" required>
+			
+			<br>
 
 	 		 <input type="submit" value="Actualizar">';
 
@@ -886,11 +948,13 @@ class MvcController{
 	 	if(isset($_POST["no_padreEditar"])){
 
 	 		$datosController = array( 
-	 			"no_pago"=>$_POST["no_pagoEditar"],
+	 		"no_pago"=>$_POST["no_pagoEditar"],
 
 	 		"no_padre"=>$_POST["no_padreEditar"],
 
 	 		"no_usu"=>$_POST["no_usuEditar"],
+
+	 		"no_alu"=>$_POST["no_aluEditar"],
 
 	 		"descripcion"=>$_POST["descripcionEditar"],
 
@@ -900,15 +964,14 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:template.php?action=cambiooooo");
+				echo "Actualización Completa!";
 
-	 		}
+			}
 
-	 		else{
+			else{
 
-	 			echo "error";
-
-	 		}
+				echo "Error";
+			}
 
 	 	}
 	
@@ -926,7 +989,7 @@ class MvcController{
 
 	 		if($respuesta == "success"){
 
-	 			header("location:template.php?action=pagos");
+	 			echo "Borrado.";
 			
 	 		}
 
