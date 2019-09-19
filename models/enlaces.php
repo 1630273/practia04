@@ -5,7 +5,7 @@ class Paginas{
 	public function enlacesPaginasModel($enlaces){
 
 
-		if($enlaces == "registroAlu" ||$enlaces == "registro"||$enlaces == "ingresar" ||$enlaces == "alumnos" || $enlaces == "inicio" || $enlaces == "usuarios" || $enlaces == "editar" ||  $enlaces == "registroAlu" || $enlaces == "registroMaestro"|| $enlaces == "maestroEditar" || $enlaces == "maestros" || $enlaces == "alumnos" ||$enlaces == "alumnoEditar" || $enlaces == "registroPadre" || $enlaces == "padres" || $enlaces == "padresEditar" || $enlaces == "registroPago" || $enlaces == "pagos" || $enlaces == "pagosEditar"|| $enlaces == "registroGrupo" || $enlaces == "grupos" || $enlaces == "grupoEditar" || $enlaces == "pagosEditar"){
+		if($enlaces == "registroAlu" ||$enlaces == "registro"||$enlaces == "ingresar" ||$enlaces == "alumnos" || $enlaces == "inicio" || $enlaces == "usuarios" || $enlaces == "editar" ||  $enlaces == "registroAlu" || $enlaces == "registroMaestro"|| $enlaces == "maestroEditar" || $enlaces == "maestros" || $enlaces == "alumnos" ||$enlaces == "alumnoEditar" || $enlaces == "registroPadre" || $enlaces == "padres" || $enlaces == "padresEditar" || $enlaces == "registroPago" || $enlaces == "pagos" || $enlaces == "pagosApoyo" || $enlaces == "pagosEditar"|| $enlaces == "registroGrupo" || $enlaces == "grupos" || $enlaces == "grupoEditar" || $enlaces == "pagosEditar"){
 
 			$module =  "../views/modules/".$enlaces.".php";
 		
