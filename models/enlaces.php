@@ -13,7 +13,7 @@ class Paginas{
 
 		else if($enlaces == "index"){
 
-			$module =  "views/modules/registro.php";
+			$module =  "../views/modules/registro.php";
 		
 		}
 
