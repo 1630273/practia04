@@ -1,7 +1,13 @@
 
-<h1>EDITAR USUARIO</h1>
 
-<form method="post">
+<div class="row">
+   
+   <div class="col-lg-8 float-center " >
+  
+	   <div class="card-box ">
+		   <h4 class="header-title m-t-0">Editar Usuario</h4>
+	   
+		   <form method="POST">
 	
 	<?php
 
@@ -12,6 +18,9 @@
 	?>
 
 </form>
+	   </div>
+   </div>
 
+</div>
 
 

@@ -252,10 +252,75 @@ public function registroGrupoModel($datosModel, $tabla){
 		$stmt->close();
 
 	}
+		// #EDITAR Grupo
+	// #-------------------------------------
+
+	public function editarGrupoModel($datosModel, $tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT no_grupo, nombre_grupo, descripcion FROM $tabla WHERE no_grupo = :no_grupo");
+
+		$stmt->bindParam(":no_grupo", $datosModel, PDO::PARAM_INT);	
+
+		$stmt->execute();
+
+		return $stmt->fetch();
+
+		$stmt->close();
+
+	}
+
+   // #ACTUALIZAR Grupo
+   // #-------------------------------------
+
+	public function actualizarGrupoModel($datosModel, $tabla){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre_grupo = :nombre, descripcion = :descripcion WHERE no_grupo = :no_grupo");
+
+		$stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":descripcion", $datosModel["descripcion"], PDO::PARAM_STR);
+		$stmt->bindParam(":no_grupo", $datosModel["no_grupo"], PDO::PARAM_INT);
+
+		if($stmt->execute()){
+
+			return "success";
+
+		}
+
+		else{
+
+			return "error";
+
+		}
+
+		$stmt->close();
+
+	}
 
 
 
+// #BORRAR Grupo
+	// #------------------------------------
+	public function borrarGrupoModel($datosModel, $tabla){
 
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE no_grupo = :no_grupoBorrar");
+
+		$stmt->bindParam(":no_grupoBorrar", $datosModel, PDO::PARAM_INT);
+
+		if($stmt->execute()){
+
+			return "success";
+
+		}
+
+		else{
+
+			return "error";
+
+		}
+
+		$stmt->close();
+
+	}
 
 		# Registro de Maestro
 
@@ -299,7 +364,7 @@ public function registroGrupoModel($datosModel, $tabla){
 
 	 }
 
-	// #EDITAR Alumno
+	// #EDITAR Maestro
 	// #-------------------------------------
 
 	 public function editarMaestroModel($datosModel, $tabla){
@@ -316,7 +381,7 @@ public function registroGrupoModel($datosModel, $tabla){
 
 	 }
 
-	// #ACTUALIZAR Alumno
+	// #ACTUALIZAR Maestro
 	// #-------------------------------------
 
 	 public function actualizarMaestroModel($datosModel, $tabla){
@@ -345,7 +410,7 @@ public function registroGrupoModel($datosModel, $tabla){
 	 }
 
 
-	// #BORRAR Alumno
+	// #BORRAR Maestro
 	// #------------------------------------
 	 public function borrarMaestroModel($datosModel, $tabla){
 

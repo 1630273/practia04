@@ -15,6 +15,9 @@ if(!$_SESSION["validar"]){
 
 
 }
+
+
+ob_start();
 ?>
 <!DOCTYPE html>
 <html>

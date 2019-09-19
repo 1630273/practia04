@@ -23,7 +23,7 @@
 
 			$vistaGrupo= new MvcController();
 			$vistaGrupo -> vistaGruposController();
-			$vistaGrupo -> borrarPagoController();
+			$vistaGrupo -> borrarGrupoController();
 
 			?>
 
@@ -35,7 +35,7 @@
 
 if(isset($_GET["action"])){
 
-	if($_GET["action"] == "cambiooooo"){
+	if($_GET["action"] == "cambioGrupo"){
 
 		echo "Cambio Exitoso";
 	
