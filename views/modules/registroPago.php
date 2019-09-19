@@ -57,7 +57,7 @@
 				   <div class="form-group">
 				   <label>Monto</label>
 				   <div>
-					   <input data-parsley-type="number" type="number"
+					   <input data-parsley-type="number" type="text"
 							   class="form-control" name="montoRegistro" required 
 							   placeholder="Ingresa Monto"/>
 				   </div>

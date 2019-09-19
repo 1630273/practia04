@@ -900,9 +900,9 @@ class MvcController{
 
 			if($respuesta == "success"){
 
-				ob_end_flush();
+		
 
-				header("location:template.php");
+				header("location:template.php?action=padres");
 				ob_end_flush();
 			}
 
@@ -1177,7 +1177,13 @@ class MvcController{
 			</div>
 	 	</div>';
 
-	 	echo '<label for="no_usuEditar"> No. Usuario</label> <input text="text" value="'.$respuesta["no_usu"].'" name="no_usuEditar" id="no_usuEditar" required>';
+		 echo '
+		 <div class="form-group">
+		 <label>no_usuario quien lo realizo</label>
+		 <div>
+		 <input text="text"  class="form-control" value="'.$respuesta["no_usu"].'" name="no_usuEditar" id="no_usuEditar" required>
+		 </div>
+	 	</div>';
 
 	 	echo'	<div class="form-group">
 				<label>Selecciona Alumno</label>
@@ -1195,15 +1201,31 @@ class MvcController{
 			</div>
 	 	</div>';
 
-	 	echo '<label for="descripcionEditar"> Descripcion</label> <input text="text" value="'.$respuesta["descripcion"].'" name="descripcionEditar" id="descripcionEditar" required>
+		 echo '
+		 
+		 <div class="form-group">
+		 <label>Descripcion</label>
+		 <div>
+		  <input text="text"  class="form-control" value="'.$respuesta["descripcion"].'" name="descripcionEditar" id="descripcionEditar" required>
+		 </div>
+	 	</div>
 			
-			<br>
-
-	 		<label for="montoEditar"> Monto</label> <input type="number" value="'.$respuesta["monto"].'" name="montoEditar" id="montoEditar" required>
+		 <div class="form-group">
+		 <label>Monto</label>
+		 <div>
+			  <input data-parsley-type="number" type="text" class="form-control" value="'.$respuesta["monto"].'" name="montoEditar" id="montoEditar" required>
 			
-			<br>
-
-	 		 <input type="submit" value="Actualizar">';
+			</div>
+			</div>
+ <div class="form-group">
+				   <div>
+					   <button type="submit" value="Actualizar" class="btn btn-block  btn-custom waves-effect waves-light">
+						   Actualizar
+					   </button>
+				   
+				   </div>
+			   </div>
+	 		';
 
 	 }
 
