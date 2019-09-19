@@ -82,7 +82,7 @@ if(!$_SESSION["validar"]){
 
                             <li>
                                 <a href="templateApoyo.php?action=inicio">
-                                    <i class="fi-air-play"></i><span class="badge badge-danger badge-pill pull-right">7</span> <span> Inicio </span>
+                                    <i class="fi-air-play"></i> <span> Inicio </span>
                                 </a>
                             </li>
                             <li>

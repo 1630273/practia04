@@ -190,7 +190,7 @@ ob_start();
                                 </div>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="template.php?action=editar&no_usu=<?php  echo $_SESSION['user_id']; ?>" class="dropdown-item notify-item">
                                     <i class="fi-head"></i> <span>Mi Cuenta</span>
                                 </a>
 
